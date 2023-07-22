@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/comida_backgorund"
+    android:padding="16dp">
+
+    <TextView
+        style="@style/titulos"
+        android:id="@+id/tituloDetail"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:textColor="@color/fondo_login"
+        android:text="Información"
+     />
+
+
+
+    <ImageView
+        android:id="@+id/imagenComida"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/hornado"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/nombreComida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hornado"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/Porcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Porcion"
+        android:textColor="@color/principal_color_ej"
+        android:textSize="20sp"
+
+       />
+    <EditText
+        android:id="@+id/cantidadProcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="20sp"
+
+        />
+
+    <TextView
+        android:id="@+id/calorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calorias"
+        android:textColor="@color/principal_color_ej"
+        android:textSize="20sp"
+
+   />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="120 calorias"
+
+        android:textSize="20sp"
+
+         />
+
+    <TextView
+        android:id="@+id/Macronutrientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Macronutrientes"
+        android:textColor="@color/principal_color_ej"
+        android:textSize="20sp"
+
+         />
+    <TextView
+        android:id="@+id/grasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.2gr"
+
+        android:textSize="20sp"
+
+        />
+    <TextView
+        android:id="@+id/proteinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8.5gr"
+
+        android:textSize="20sp"
+
+        />
+    <TextView
+        android:id="@+id/carbohidratos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50gr"
+
+        android:textSize="20sp"
+
+        />
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:layout_width="55dp"
+           android:layout_height="55dp"
+           android:layout_gravity="center_horizontal"
+           android:backgroundTint="@color/boton_color"
+           android:src="@drawable/baseline_add_24"
+
+           >
+
+       </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+</LinearLayout>

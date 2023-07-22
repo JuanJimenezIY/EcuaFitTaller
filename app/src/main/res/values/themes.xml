@@ -59,7 +59,18 @@
 
     </style>
     <style name="activeIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/principal_color_ej</item>
+        <item name="android:color">@color/boton_color</item>
 
     </style>
+
+    <style name="titulos" >
+
+
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+
 </resources>

@@ -38,4 +38,15 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        binding.registro.setOnClickListener {
+
+
+            //Intents
+            var intent = Intent(
+                this, RegistroActivity::class.java
+            )
+
+            startActivity(intent)
+        }
     }}
