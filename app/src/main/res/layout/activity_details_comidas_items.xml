@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -17,17 +18,35 @@
         android:text="Información"
      />
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="255dp">
 
-
-    <ImageView
-        android:id="@+id/imagenComida"
+    <androidx.cardview.widget.CardView
         android:layout_width="350dp"
         android:layout_height="250dp"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:src="@drawable/hornado"
-        android:scaleType="fitXY"
-        />
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imagenComida"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/hornado"
+
+
+            />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <TextView
         android:id="@+id/nombreComida"
@@ -36,83 +55,161 @@
         android:text="Hornado"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+
+        android:textColor="@color/principal_color_ej"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/Porcion"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Porcion"
-        android:textColor="@color/principal_color_ej"
-        android:textSize="20sp"
+        android:layout_height="240dp"
+        android:orientation="horizontal"
 
-       />
-    <EditText
-        android:id="@+id/cantidadProcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textSize="20sp"
+        >
 
-        />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            >
+            <TextView
+                android:id="@+id/Porcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Porcion"
+                android:textColor="@color/principal_color_ej"
+                android:textSize="20sp"
 
-    <TextView
+                />
+            <EditText
+                android:id="@+id/cantidadProcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20sp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calorias"
-        android:textColor="@color/principal_color_ej"
-        android:textSize="20sp"
+                />
 
-   />
-    <TextView
-        android:id="@+id/calorias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="120 calorias"
+            <TextView
 
-        android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorias"
+                android:textColor="@color/principal_color_ej"
+                android:textSize="20sp"
 
-         />
+                />
+            <TextView
+                android:id="@+id/calorias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120 calorias"
 
-    <TextView
+                android:textSize="20sp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Macronutrientes"
-        android:textColor="@color/principal_color_ej"
-        android:textSize="20sp"
+                />
 
-         />
-    <TextView
-        android:id="@+id/Macronutrientes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.2gr"
+            <TextView
 
-        android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Macronutrientes"
+                android:textColor="@color/principal_color_ej"
+                android:textSize="20sp"
 
-        />
-    <TextView
-        android:id="@+id/proteinas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="8.5gr"
+                />
+            <TextView
+                android:id="@+id/Macronutrientes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.2gr"
 
-        android:textSize="20sp"
+                android:textSize="20sp"
 
-        />
-    <TextView
-        android:id="@+id/carbohidratos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="50gr"
+                />
+            <TextView
+                android:id="@+id/proteinas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8.5gr"
 
-        android:textSize="20sp"
+                android:textSize="20sp"
 
-        />
+                />
+            <TextView
+                android:id="@+id/carbohidratos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50gr"
+
+                android:textSize="20sp"
+
+                />
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:layout_width="wrap_content"
+           android:layout_height="225dp"
+           android:orientation="vertical"
+           >
+
+           <TextView
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Micronutrientes"
+               android:textColor="@color/principal_color_ej"
+               android:textSize="20sp"
+
+               />
+           <TextView
+               android:id="@+id/vitaminas"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Vitaminas"
+
+               android:textSize="20sp"
+
+               />
+           <TextView
+               android:id="@+id/minerales"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Minerales"
+
+               android:textSize="20sp"
+
+               />
+
+           <TextView
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Region"
+               android:textColor="@color/principal_color_ej"
+               android:textSize="20sp"
+
+               />
+           <TextView
+               android:id="@+id/region"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Sierra"
+
+               android:textSize="20sp"
+
+               />
+
+       </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
        <com.google.android.material.floatingactionbutton.FloatingActionButton
            android:layout_width="55dp"
            android:layout_height="55dp"

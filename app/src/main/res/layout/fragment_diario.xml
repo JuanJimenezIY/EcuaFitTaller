@@ -25,7 +25,7 @@
 
     <LinearLayout
         android:id="@+id/listView"
-        android:layout_width="match_parent"
+        android:layout_width="390dp"
         android:layout_height="500dp"
         android:layout_margin="25dp"
 
@@ -39,11 +39,12 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.SearchView
-            android:layout_width="match_parent"
+            android:layout_width="375dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titulo"
+            android:layout_gravity="center"
              android:background="@drawable/searchview_rounded"
             android:layout_marginBottom="@dimen/margen"
 
@@ -54,9 +55,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvComidas"
 
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/principal_color_ej"
 
             />
 
