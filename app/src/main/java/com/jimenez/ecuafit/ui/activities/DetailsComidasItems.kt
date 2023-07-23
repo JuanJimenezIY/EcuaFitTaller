@@ -10,7 +10,9 @@ import kotlin.streams.toList
 
 class DetailsComidasItems : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsComidasItemsBinding
-    private val macroNut = listOf<String>("Carbohidratos ", "Grasas ", " Proteinas")
+    private val macroNut = listOf<String>("Carbohidratos "
+                                        , "Grasas        "
+                                        , "Proteinas    ")
     private var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,7 @@ class DetailsComidasItems : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         val item = intent.getParcelableExtra<Comida>("name")
         if (item != null) {
 
