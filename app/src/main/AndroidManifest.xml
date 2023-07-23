@@ -21,10 +21,10 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.activities.MenuActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
