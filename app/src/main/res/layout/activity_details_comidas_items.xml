@@ -125,7 +125,8 @@
             <ListView
                 android:id="@+id/macroList"
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:contextClickable="false" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
