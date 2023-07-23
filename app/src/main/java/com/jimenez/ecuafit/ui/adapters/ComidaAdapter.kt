@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.Comida
-import com.jimenez.ecuafit.databinding.ComidaItemBinding
-import com.squareup.picasso.Picasso
+import com.jimenez.ecuafit.databinding.LayoutComidasBinding
 
 
 class ComidaAdapter(
@@ -21,15 +20,15 @@ class ComidaAdapter(
     var items: List<Comida> = listOf()
 
     class ComidaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding: ComidaItemBinding = ComidaItemBinding.bind(view)
+        private val binding: LayoutComidasBinding = LayoutComidasBinding.bind(view)
 
         fun render(
             item: Comida,
             fnClick: (Comida) -> Unit
         ) {
-            binding.txtNombre.text = item.nombre
-            binding.txtCalorias.text = item.calorias.toString()
-            Picasso.get().load(item.foto).into(binding.imgComida)
+            binding.nombreComida.text = item.nombre
+            binding.caloriasComida.text = item.calorias.toString()
+            //Picasso.get().load(item.foto).into(binding.imgComida)
 
 
 
@@ -56,7 +55,7 @@ class ComidaAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return ComidaViewHolder(
             inflater.inflate(
-                R.layout.comida_item,
+                R.layout.layout_comidas,
                 parent, false
             )
         )
