@@ -16,6 +16,7 @@
             android:name=".ui.activities.DetailsComidasItems"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".ui.activities.RegistroActivity"
             android:exported="false" />
 

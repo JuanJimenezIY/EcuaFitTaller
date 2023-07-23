@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -56,6 +57,13 @@ dependencies {
     // Corrutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    //firebase
+    implementation("com.google.firebase:firebase-firestore:24.7.0")
+    implementation platform('com.google.firebase:firebase-bom:32.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth:22.1.0'
+
+
 
 
 }
