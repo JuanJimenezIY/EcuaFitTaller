@@ -2,7 +2,7 @@ package com.jimenez.ecuafit.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jimenez.ecuafit.R
+import android.widget.ArrayAdapter
 import com.jimenez.ecuafit.data.Comida
 import com.jimenez.ecuafit.databinding.ActivityDetailsComidasItemsBinding
 import com.squareup.picasso.Picasso
@@ -19,7 +19,11 @@ class DetailsComidasItems : AppCompatActivity() {
         super.onStart()
         val item=intent.getParcelableExtra<Comida>("name")
         if(item!=null){
-            binding.Macronutrientes.text=item.macronutrientes
+
+            binding.macroList.adapter= ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,item.macronutrientes)
+            binding.microList.adapter= ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,item.micronutrientes)
+
+
             binding.nombreComida.text=item.nombre
             binding.calorias.text=item.calorias.toString()
             Picasso.get().load(item.foto).into(binding.imagenComida)

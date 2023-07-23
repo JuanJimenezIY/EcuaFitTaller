@@ -121,34 +121,11 @@
                 android:textSize="20sp"
 
                 />
-            <TextView
-                android:id="@+id/Macronutrientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3.2gr"
 
-                android:textSize="20sp"
-
-                />
-            <TextView
-                android:id="@+id/proteinas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8.5gr"
-
-                android:textSize="20sp"
-
-                />
-            <TextView
-                android:id="@+id/carbohidratos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50gr"
-
-                android:textSize="20sp"
-
-                />
-
+            <ListView
+                android:id="@+id/macroList"
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -167,24 +144,11 @@
                android:textSize="20sp"
 
                />
-           <TextView
-               android:id="@+id/vitaminas"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Vitaminas"
 
-               android:textSize="20sp"
-
-               />
-           <TextView
-               android:id="@+id/minerales"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Minerales"
-
-               android:textSize="20sp"
-
-               />
+           <ListView
+               android:id="@+id/microList"
+               android:layout_width="match_parent"
+               android:layout_height="80dp" />
 
            <TextView
 

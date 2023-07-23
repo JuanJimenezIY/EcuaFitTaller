@@ -8,8 +8,8 @@ data class Comida(
     val calorias: Int,
     val descripcion: String,
     val foto: String,
-    val macronutrientes: String,
-    val micronutrientes: String,
+    val macronutrientes: List<String>,
+    val micronutrientes:List<String>,
     val nombre: String,
     val region: String
 ):Parcelable

@@ -22,8 +22,8 @@ class ComidaLogic {
                     document.getLong("calorias")?.toInt() ?: 0,
                     document.getString("descripcion") ?: "",
                     document.getString("foto") ?: "",
-                    document.getString("macronutrientes") ?: "",
-                    document.getString("micronutrientes") ?: "",
+                    (document.get("macronutrientes") ?: "") as List<String>,
+                    (document.get("micronutrientes") ?: "") as List<String>,
                     document.getString("nombre") ?: "",
                     document.getString("region") ?: ""
                 )
