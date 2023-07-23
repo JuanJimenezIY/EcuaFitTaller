@@ -1,60 +1,107 @@
 package com.jimenez.ecuafit.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.jimenez.ecuafit.R
+import com.jimenez.ecuafit.data.Comida
+import com.jimenez.ecuafit.databinding.FragmentDiarioBinding
+import com.jimenez.ecuafit.logic.ComidaLogic
+import com.jimenez.ecuafit.ui.activities.DetailsComidasItems
+import com.jimenez.ecuafit.ui.adapters.ComidaAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DiarioFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DiarioFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding:FragmentDiarioBinding
+    private lateinit var lmanager:LinearLayoutManager
+    private var comidaItems:MutableList<Comida> = mutableListOf();
+  //  private lateinit var progressBar:ProgressBar
+    private var rvAdapter:ComidaAdapter=ComidaAdapter{sendComidaItem(it)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diario, container, false)
-    }
+        binding=FragmentDiarioBinding.inflate(layoutInflater,container,false)
+        lmanager= LinearLayoutManager(requireActivity(),LinearLayoutManager.VERTICAL,false)
+        binding.rvComidas.addOnScrollListener(
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiarioFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiarioFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy > 0) {
+                        val v = lmanager.childCount
+                        val p = lmanager.findFirstVisibleItemPosition()
+                        val t = lmanager.itemCount
+                    }
                 }
             }
+        )
+        //progressBar = binding.progressBar
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        chargeData()
+    }
+
+    fun sendComidaItem(item: Comida){
+
+        val i = Intent(requireActivity(), DetailsComidasItems::class.java)
+        i.putExtra("name", item)
+        startActivity(i)
+    }
+    private fun chargeData() {
+
+
+        lifecycleScope.launch(Dispatchers.Main) {
+           // progressBar.visibility = View.VISIBLE
+            comidaItems = withContext(Dispatchers.IO) {
+                return@withContext ComidaLogic().getAllComida()
+
+
+
+            } as MutableList<Comida>
+            if (comidaItems.size == 0) {
+                var f = Snackbar.make(binding.titulo, "No se encontro", Snackbar.LENGTH_LONG)
+
+                f.show()
+            }
+            rvAdapter.items = comidaItems
+
+
+
+
+
+
+
+            binding.rvComidas.apply {
+                this.adapter = rvAdapter
+                //  this.layoutManager = lmanager
+                this.layoutManager = lmanager
+            }
+           // progressBar.visibility = View.GONE
+
+
+        }
     }
 }

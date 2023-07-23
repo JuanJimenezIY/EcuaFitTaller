@@ -59,7 +59,7 @@
         />
 
     <TextView
-        android:id="@+id/calorias"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calorias"
@@ -68,6 +68,7 @@
 
    />
     <TextView
+        android:id="@+id/calorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="120 calorias"
@@ -77,7 +78,7 @@
          />
 
     <TextView
-        android:id="@+id/Macronutrientes"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Macronutrientes"
@@ -86,7 +87,7 @@
 
          />
     <TextView
-        android:id="@+id/grasa"
+        android:id="@+id/Macronutrientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3.2gr"

@@ -1,5 +1,6 @@
 package com.jimenez.ecuafit.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,7 @@ class RegistroActivity : AppCompatActivity() {
         super.onStart()
         binding.buttonRegister.setOnClickListener {
             Log.d("UCE","SAVE")
+            disableAll()
             val res=db.collection("users").document(binding.editTextEmail.text.toString()).set(
                 hashMapOf("altura" to binding.editTextAltura.text.toString(),
                 "correo" to binding.editTextEmail.text.toString(),
@@ -33,14 +35,18 @@ class RegistroActivity : AppCompatActivity() {
             )
             res.addOnCompleteListener {
                 if (it.isSuccessful){
-                    Snackbar.make(binding.textViewEmailLabel,"Registro completo",Snackbar.LENGTH_SHORT).show()
+                    val i=Intent()
+                    i.putExtra("result","Registro completo")
+                    setResult(RESULT_OK,i)
+                    //Snackbar.make(binding.textViewEmailLabel,"Registro completo",Snackbar.LENGTH_SHORT).show()
+                    finish()
                 }
             }
 
 
         }
     }
-    fun register(){
-
+    fun disableAll(){
+        binding.buttonRegister.isEnabled=false
     }
 }

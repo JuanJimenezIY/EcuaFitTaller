@@ -13,4 +13,5 @@
     <string name="titulo_second_fragment">Busqueda Marvel</string>
     <string name="third_fragment">Favoritos</string>
     <string name="contrase_a">Contraseña</string>
+    <string name="enabled">true</string>
 </resources>

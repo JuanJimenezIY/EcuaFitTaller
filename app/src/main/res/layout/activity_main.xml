@@ -42,7 +42,7 @@
         android:id="@+id/txt_name1"
         android:layout_width="320dp"
         android:layout_height="@dimen/tamanio"
-        app:placeholderText="Nombre de usuario"
+        app:placeholderText="Correo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_correo"
@@ -52,10 +52,11 @@
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Usuario"
+            android:hint="Correo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_correo"
+            android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Usuario"
+        android:text="Correo"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintHorizontal_bias="0.126"
