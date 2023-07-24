@@ -87,7 +87,7 @@
                 />
 
             <EditText
-
+               style="@style/details"
                 android:id="@+id/cantidadProcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,12 +111,12 @@
                 style="@style/details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+
+
                 android:paddingStart="16dp"
 
-
-                android:text="120 calorias"
-
-                />
+                android:text="120 calorias" />
 
             <TextView
 
@@ -178,6 +178,7 @@
             <TextView
                 android:id="@+id/region"
                 style="@style/details"
+                android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
