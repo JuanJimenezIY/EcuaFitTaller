@@ -65,7 +65,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:orientation="horizontal"
 
         >
@@ -73,9 +73,9 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="175dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginStart="15dp"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/Porcion"
                 android:layout_width="wrap_content"
@@ -85,16 +85,16 @@
                 android:textSize="20sp"
 
                 />
+
             <EditText
 
                 android:id="@+id/cantidadProcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
                 android:layout_marginStart="15dp"
-                android:textSize="16sp"
                 android:paddingStart="5dp"
-                />
+                android:text="1"
+                android:textSize="16sp" />
 
             <TextView
 
@@ -105,15 +105,16 @@
                 android:textSize="20sp"
 
                 />
+
             <TextView
-                style="@style/details"
                 android:id="@+id/calorias"
+                style="@style/details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120 calorias"
-
-
                 android:paddingStart="16dp"
+
+
+                android:text="120 calorias"
 
                 />
 
@@ -133,7 +134,7 @@
 
                 android:layout_width="wrap_content"
 
-                android:layout_height="80dp"
+                android:layout_height="150dp"
                 android:contextClickable="false"
                 android:divider="@color/white"
                 android:textDirection="firstStrongLtr"
@@ -141,64 +142,65 @@
                 android:textFilterEnabled="false" />
 
 
-
         </androidx.appcompat.widget.LinearLayoutCompat>
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="wrap_content"
-           android:layout_height="225dp"
-           android:orientation="vertical"
-           >
 
-           <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Micronutrientes"
-               android:textColor="@color/principal_color_ej"
-               android:textSize="20sp"
+            <TextView
 
-               />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Micronutrientes"
+                android:textColor="@color/principal_color_ej"
+                android:textSize="20sp"
 
-           <ListView
-               android:id="@+id/microList"
-               android:layout_width="match_parent"
-               android:layout_height="80dp"
-               android:divider="@color/white" />
+                />
 
-           <TextView
+            <ListView
+                android:id="@+id/microList"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:divider="@color/white" />
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Region"
-               android:textColor="@color/principal_color_ej"
-               android:textSize="20sp"
+            <TextView
 
-               />
-           <TextView
-               style="@style/details"
-               android:id="@+id/region"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Sierra"
-               android:paddingStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Region"
+                android:textColor="@color/principal_color_ej"
+                android:textSize="20sp"
 
-               />
+                />
 
-       </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/region"
+                style="@style/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:text="Sierra"
+
+                />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="right|bottom"
+
+                android:layout_marginTop="60dp"
+                android:backgroundTint="@color/boton_color"
+                android:src="@drawable/baseline_add_24"
+
+                >
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-       <com.google.android.material.floatingactionbutton.FloatingActionButton
-           android:layout_width="55dp"
-           android:layout_height="55dp"
-           android:layout_gravity="center_horizontal"
-           android:backgroundTint="@color/boton_color"
-           android:src="@drawable/baseline_add_24"
-
-           >
-
-       </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
 </LinearLayout>
