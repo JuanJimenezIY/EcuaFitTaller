@@ -13,13 +13,21 @@
         android:theme="@style/Theme.EcuaFit"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.EjerciciosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.AguaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.PesoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.DetailsComidasItems"
             android:exported="false" />
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".ui.activities.RegistroActivity"
-            android:exported="false" />
-
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="false" />

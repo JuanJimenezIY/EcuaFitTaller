@@ -3,8 +3,8 @@
 
     <string name="name_banner">EcuaFit App</string>
     <string name="menu_inicio">Inicio</string>
-    <string name="menu_informe">Informe</string>
-    <string name="menu_diario">Menu</string>
+    <string name="menu_informe">Informes</string>
+    <string name="menu_diario">Diario</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Personajes Marvel</string>
 
