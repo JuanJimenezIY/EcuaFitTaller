@@ -1,12 +1,10 @@
 package com.jimenez.ecuafit.logic
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jimenez.ecuafit.data.Comida
+import com.jimenez.ecuafit.data.entities.Comida
 import kotlinx.coroutines.tasks.await
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class ComidaLogic {

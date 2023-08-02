@@ -1,4 +1,4 @@
-package com.jimenez.ecuafit.data
+package com.jimenez.ecuafit.data.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

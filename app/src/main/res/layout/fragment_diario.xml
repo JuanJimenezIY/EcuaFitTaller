@@ -39,16 +39,16 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchComida"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margen"
+            android:background="@drawable/searchview_rounded"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titulo"
-            android:layout_gravity="center"
-             android:background="@drawable/searchview_rounded"
-            android:layout_marginBottom="@dimen/margen"
 
-            >
+            app:layout_constraintTop_toBottomOf="@id/titulo">
 
         </androidx.appcompat.widget.SearchView>
 
