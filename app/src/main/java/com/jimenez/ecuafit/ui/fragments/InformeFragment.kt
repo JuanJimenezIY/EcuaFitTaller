@@ -1,11 +1,19 @@
 package com.jimenez.ecuafit.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jimenez.ecuafit.R
+import com.jimenez.ecuafit.databinding.ActivityAguaBinding
+import com.jimenez.ecuafit.databinding.ActivityPesoBinding
+import com.jimenez.ecuafit.databinding.FragmentInformeBinding
+import com.jimenez.ecuafit.ui.activities.AguaActivity
+import com.jimenez.ecuafit.ui.activities.PesoActivity
+import com.jimenez.ecuafit.ui.activities.RegistroActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,13 +29,16 @@ class InformeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding: FragmentInformeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding= FragmentInformeBinding.inflate(layoutInflater)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -38,6 +49,19 @@ class InformeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_informe, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.agua.setOnClickListener {
+            val intent = Intent(requireContext(), AguaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Configurar el click listener para el CardView de Peso
+        binding.pesoText.setOnClickListener {
+            val intent = Intent(requireContext(), PesoActivity::class.java)
+            startActivity(intent)
+        }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

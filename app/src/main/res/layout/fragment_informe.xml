@@ -370,16 +370,18 @@
         app:layout_constraintTop_toBottomOf="@id/cardEjercicios">
 
         <LinearLayout
+            android:id="@+id/agua"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/aguaText"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="@string/agua"
                 android:textColor="@color/boton_color"
-                android:text="Agua"
                 android:textSize="30dp">
 
             </TextView>
@@ -406,16 +408,18 @@
         app:layout_constraintTop_toBottomOf="@id/cardEjercicios">
 
         <LinearLayout
+            android:id="@+id/peso"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/pesoText"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="@string/peso"
                 android:textColor="@color/boton_color"
-                android:text="Peso"
                 android:textSize="30dp">
 
             </TextView>
