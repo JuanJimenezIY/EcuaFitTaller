@@ -3,7 +3,7 @@ package com.jimenez.ecuafit.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import com.jimenez.ecuafit.data.Comida
+import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.ActivityDetailsComidasItemsBinding
 import com.squareup.picasso.Picasso
 import kotlin.streams.toList

@@ -5,14 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jimenez.ecuafit.R
-import com.jimenez.ecuafit.data.Comida
+import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.LayoutComidasBinding
+import java.util.Date
 
 
 class ComidaAdapter(
 
 
-    private var fnClick: (Comida) -> Unit
+    private var fnClick: (Comida) -> Unit,
+    private var fnSave: (Comida) -> Boolean
 ) :
 
     RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
@@ -24,7 +26,9 @@ class ComidaAdapter(
 
         fun render(
             item: Comida,
-            fnClick: (Comida) -> Unit
+            fnClick: (Comida) -> Unit,
+            fnSave:(Comida)->Boolean
+
         ) {
             binding.nombreComida.text = item.nombre
             binding.caloriasComida.text = item.calorias.toString()
@@ -35,6 +39,9 @@ class ComidaAdapter(
 
             itemView.setOnClickListener {
                 fnClick(item)
+            }
+            binding.addComida.setOnClickListener {
+                fnSave(item)
             }
             //boton vista marvel chars
             //  binding.b{
@@ -62,7 +69,7 @@ class ComidaAdapter(
     }
 
     override fun onBindViewHolder(holder: ComidaAdapter.ComidaViewHolder, position: Int) {
-        holder.render(items[position], fnClick)
+        holder.render(items[position], fnClick,fnSave)
     }
 
     override fun getItemCount(): Int = items.size

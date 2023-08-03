@@ -55,13 +55,13 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addComida"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/boton_color"
-                android:src="@drawable/baseline_add_24"
 
-                >
+                android:src="@drawable/baseline_add_24">
 
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
