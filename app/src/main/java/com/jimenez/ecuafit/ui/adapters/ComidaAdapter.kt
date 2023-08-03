@@ -31,7 +31,7 @@ class ComidaAdapter(
 
         ) {
             binding.nombreComida.text = item.nombre
-            binding.caloriasComida.text = item.calorias.toString()
+            binding.caloriasComida.text = item.calorias.toString()+" kcals"
             //Picasso.get().load(item.foto).into(binding.imgComida)
 
 
