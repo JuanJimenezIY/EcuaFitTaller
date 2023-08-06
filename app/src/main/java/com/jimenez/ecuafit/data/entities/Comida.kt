@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Comida(
-    val calorias: Int,
+    var calorias: Int,
     val descripcion: String,
     val foto: String,
     val macronutrientes: List<String>,

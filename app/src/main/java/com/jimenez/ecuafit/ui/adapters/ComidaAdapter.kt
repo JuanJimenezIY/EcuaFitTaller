@@ -27,14 +27,12 @@ class ComidaAdapter(
         fun render(
             item: Comida,
             fnClick: (Comida) -> Unit,
-            fnSave:(Comida)->Boolean
+            fnSave: (Comida) -> Boolean
 
         ) {
             binding.nombreComida.text = item.nombre
-            binding.caloriasComida.text = item.calorias.toString()+" kcals"
+            binding.caloriasComida.text = item.calorias.toString() + " kcals"
             //Picasso.get().load(item.foto).into(binding.imgComida)
-
-
 
 
             itemView.setOnClickListener {
@@ -53,8 +51,6 @@ class ComidaAdapter(
     }
 
 
-
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -69,7 +65,7 @@ class ComidaAdapter(
     }
 
     override fun onBindViewHolder(holder: ComidaAdapter.ComidaViewHolder, position: Int) {
-        holder.render(items[position], fnClick,fnSave)
+        holder.render(items[position], fnClick, fnSave)
     }
 
     override fun getItemCount(): Int = items.size

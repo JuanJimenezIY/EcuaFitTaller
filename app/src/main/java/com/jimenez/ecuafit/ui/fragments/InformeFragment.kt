@@ -12,6 +12,7 @@ import com.jimenez.ecuafit.databinding.ActivityAguaBinding
 import com.jimenez.ecuafit.databinding.ActivityPesoBinding
 import com.jimenez.ecuafit.databinding.FragmentInformeBinding
 import com.jimenez.ecuafit.ui.activities.AguaActivity
+import com.jimenez.ecuafit.ui.activities.ComidaDiariaActivity
 import com.jimenez.ecuafit.ui.activities.PesoActivity
 import com.jimenez.ecuafit.ui.activities.RegistroActivity
 
@@ -36,6 +37,8 @@ class InformeFragment : Fragment() {
 
     }
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +54,10 @@ class InformeFragment : Fragment() {
         // Configurar el click listener para el CardView de Peso
         binding.pesoText.setOnClickListener {
             val intent = Intent(requireContext(), PesoActivity::class.java)
+            startActivity(intent)
+        }
+        binding.infDiario.setOnClickListener {
+            val intent=Intent(requireContext(),ComidaDiariaActivity::class.java)
             startActivity(intent)
         }
     }
