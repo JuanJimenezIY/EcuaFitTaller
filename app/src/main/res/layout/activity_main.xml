@@ -28,7 +28,7 @@
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/boton_color"
+        android:backgroundTint="@color/color_complementario"
         android:text="Ingresar"
         android:textAllCaps="false"
         app:cornerRadius="10dp"
@@ -38,40 +38,38 @@
         app:layout_constraintTop_toBottomOf="@id/password_toggle" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/hintText"
         android:id="@+id/txt_name1"
+        style="@style/hintText"
         android:layout_width="320dp"
         android:layout_height="@dimen/tamanio"
-        app:placeholderText="Correo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_correo"
-        >
+        app:placeholderText="Correo">
 
         <EditText
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Correo"
+
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_correo"
-            android:inputType="textEmailAddress"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/txt_correo" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_toggle"
         style="@style/hintText"
-        app:placeholderText="******"
         android:layout_width="320dp"
         android:layout_height="@dimen/tamanio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_contraseña"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:placeholderText="******">
 
         <EditText
             android:id="@+id/txt_password"
@@ -103,8 +101,9 @@
     <TextView
         android:id="@+id/txt_subtitulo"
         style="@style/textSubTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="42dp"
         android:text="Ingrese sus datos de inicio de sesión "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.33"
@@ -150,7 +149,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 
+    <TextView
+        android:id="@+id/huellaDactilar"
+        style="@style/loginTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Ingreso con Huella"
 
-
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

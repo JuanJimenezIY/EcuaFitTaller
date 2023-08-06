@@ -9,25 +9,26 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        style="@style/titulos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="64dp"
-        android:gravity="center"
+
+        android:layout_marginTop="68dp"
+
         android:text="@string/agua"
-        android:theme="@style/titulosAyP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/totalAgua"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
+
         android:layout_marginTop="36dp"
-        android:gravity="center"
+
         android:text="0 ml"
         android:theme="@style/subtituloAyP"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 

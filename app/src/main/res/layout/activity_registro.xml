@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre:"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Correo Electrónico:"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Genero"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Edad:"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Peso"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Altura:"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Contraseña"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
             <EditText

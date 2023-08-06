@@ -46,11 +46,7 @@ class InformeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.agua.setOnClickListener {
-            val intent = Intent(requireContext(), AguaActivity::class.java)
-            startActivity(intent)
 
-        }
 
         // Configurar el click listener para el CardView de Peso
         binding.pesoText.setOnClickListener {

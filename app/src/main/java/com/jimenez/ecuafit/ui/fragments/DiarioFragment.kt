@@ -17,6 +17,7 @@ import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.FragmentDiarioBinding
 import com.jimenez.ecuafit.logic.ComidaLogic
 import com.jimenez.ecuafit.logic.ComidaLogicDB
+import com.jimenez.ecuafit.ui.activities.AguaActivity
 import com.jimenez.ecuafit.ui.activities.DetailsComidasItems
 import com.jimenez.ecuafit.ui.adapters.ComidaAdapter
 import com.jimenez.ecuafit.ui.utilities.EcuaFit
@@ -38,6 +39,7 @@ class DiarioFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         chargeData()
 
 
@@ -47,6 +49,8 @@ class DiarioFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         binding = FragmentDiarioBinding.inflate(layoutInflater, container, false)
         lmanager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.rvComidas.addOnScrollListener(
@@ -65,6 +69,11 @@ class DiarioFragment : Fragment() {
         searchView = binding.searchComida
         //progressBar = binding.progressBar
         // Inflate the layout for this fragment
+        binding.agua.setOnClickListener {
+            val intent = Intent(requireContext(), AguaActivity::class.java)
+            startActivity(intent)
+
+        }
         return binding.root
     }
     fun saveComida(item:Comida):Boolean{

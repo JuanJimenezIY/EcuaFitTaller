@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:background="@color/principal_color_ej"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@id/pesoCard"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_margin="10dp"
-        android:backgroundTint="@color/white"
-
+        android:backgroundTint="@color/card_background"
         android:orientation="horizontal"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,36 +30,37 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center"
                 android:text="Hornado"
-                android:textColor="@color/boton_color"
-                android:textSize="20sp" />
+                android:textColor="@color/color_complementario"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/cantidad"
-                android:layout_width="85dp"
+                android:layout_width="80dp"
                 android:padding="10dp"
                 android:layout_height="match_parent"
                 android:gravity="left|center"
                 android:text="cant: 1"
-                android:textColor="@color/boton_color"
-                android:textSize="20sp" />
+                android:textColor="@color/color_complementario"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/caloriasComida"
-                android:layout_width="80dp"
+                android:layout_width="85dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="left|center"
                 android:text="150 kcal"
-                android:textColor="@color/boton_color"
-                android:textSize="20sp" />
+                android:textColor="@color/color_complementario"
+                android:textSize="18sp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addComida"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/boton_color"
+                android:backgroundTint="@color/color_boton"
 
+                android:layout_marginStart="7dp"
                 android:src="@drawable/baseline_add_24">
 
             </com.google.android.material.floatingactionbutton.FloatingActionButton>

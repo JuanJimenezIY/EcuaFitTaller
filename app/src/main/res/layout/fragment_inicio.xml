@@ -34,7 +34,7 @@
         android:id="@+id/caloriasCard"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:backgroundTint="@color/button_font_color_ej"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grafica"
         android:orientation="horizontal"
@@ -52,18 +52,20 @@
                 android:layout_width="175dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:text="Calorias consumidas"
+
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="175dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="1200 cals"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -71,7 +73,7 @@
         android:id="@id/pesoCard"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:backgroundTint="@color/button_font_color_ej"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caloriasCard"
         android:orientation="horizontal"
@@ -89,7 +91,7 @@
                 android:layout_width="175dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:text="Peso "
                 android:textSize="20sp" />
 
@@ -97,10 +99,11 @@
                 android:layout_width="175dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:gravity="center"
                 android:text=" +0.5 kg"
-                android:textSize="40sp" />
+                android:textStyle="bold"
+                android:textSize="30sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -109,7 +112,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:backgroundTint="@color/button_font_color_ej"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pesoCard"
         android:orientation="horizontal"
@@ -128,15 +131,17 @@
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/boton_color"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_complementario"
                 android:text="Historial "
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:gravity="center"
                 android:text="1900 cals     04/19"
                 android:textSize="30sp" />
@@ -144,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/boton_color"
+                android:textColor="@color/color_complementario"
                 android:gravity="center"
                 android:text="2200 cals     04/18"
                 android:textSize="30sp" />

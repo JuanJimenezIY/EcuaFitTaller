@@ -15,6 +15,10 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        FragmentsManager().replaceFragment(
+            supportFragmentManager,binding.frmContainer.id,InicioFragment()
+        )
+
     }
     override fun onStart() {
         super.onStart()

@@ -3,13 +3,19 @@
     <style name="Base.Theme.EcuaFit" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/color_boton</item>
+
+        <item name="colorPrimary">@color/color_complementario</item>
+
+
+
     </style>
 
     <style name="Theme.EcuaFit" parent="Base.Theme.EcuaFit" />
     <style name="textTitle" >
 
 
-        <item name="android:textColor">@color/color_secundario</item>
+        <item name="android:textColor">@color/color_boton</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
 
@@ -17,7 +23,7 @@
     <style name="loginTextTitle" >
 
 
-        <item name="android:textColor">@color/boton_color</item>
+        <item name="android:textColor">@color/color_boton</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
 
@@ -59,7 +65,7 @@
 
     </style>
     <style name="activeIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/boton_color</item>
+        <item name="android:color">@color/color_complementario</item>
 
     </style>
 
