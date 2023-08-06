@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.ActivityDetailsComidasItemsBinding
 import com.jimenez.ecuafit.logic.ComidaLogicDB
@@ -65,6 +66,7 @@ class DetailsComidasItems : AppCompatActivity() {
             if (item != null) {
                 saveComida(item)
             }
+            Snackbar.make(binding.btnAddComida,"Comida agregada",Snackbar.LENGTH_SHORT).show()
         }
         binding.cantidadProcion.addTextChangedListener {
             Log.d("UCE",it.toString())
@@ -108,8 +110,10 @@ class DetailsComidasItems : AppCompatActivity() {
         var d=lifecycleScope.launch(Dispatchers.Main){
             withContext(Dispatchers.IO){
                 ComidaLogicDB().insertComida(item, Integer.parseInt(binding.cantidadProcion.text.toString()), Date())
+
             }
         }
+
         return d.isCompleted
     }
 

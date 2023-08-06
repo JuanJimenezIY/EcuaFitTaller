@@ -12,9 +12,6 @@
         android:layout_height="match_parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-
-
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"/>
@@ -23,11 +20,13 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
 
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         app:itemIconTint="@drawable/selector"
         app:itemActiveIndicatorStyle="@style/activeIndicator"
-        android:background="@color/color_secundario"
+        app:itemRippleColor="@color/color_boton"
+        android:background="@color/white"
 
+        app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

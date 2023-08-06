@@ -80,9 +80,10 @@ class DiarioFragment : Fragment() {
         Log.d("UCE",item.nombre)
         var d=lifecycleScope.launch(Dispatchers.Main){
             withContext(Dispatchers.IO){
-                ComidaLogicDB().insertComida(item, 10 ,Date())
+                ComidaLogicDB().insertComida(item, 1 ,Date())
             }
         }
+
         return d.isCompleted
     }
 

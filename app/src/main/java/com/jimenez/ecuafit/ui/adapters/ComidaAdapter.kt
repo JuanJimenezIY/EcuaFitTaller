@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.LayoutComidasBinding
@@ -40,6 +41,7 @@ class ComidaAdapter(
             }
             binding.addComida.setOnClickListener {
                 fnSave(item)
+                Snackbar.make(binding.addComida,"Comida agregada", Snackbar.LENGTH_SHORT).show()
             }
             //boton vista marvel chars
             //  binding.b{

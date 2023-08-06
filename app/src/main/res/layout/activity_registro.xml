@@ -14,7 +14,7 @@
     <!-- TextView para el título de la página -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="613dp">
+        android:layout_height="650dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +32,7 @@
                 android:textColor="@color/principal_color_ej" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
                 android:hint="Ingresa tu nombre" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewEmailLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,11 +64,12 @@
                 android:inputType="textEmailAddress" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Genero"
+                android:text="Genero:"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
@@ -74,10 +77,11 @@
                 android:id="@+id/editTextGenero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu genero"
+                android:hint="Ingresa tu género"
                 android:inputType="text" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,11 +98,12 @@
                 android:inputType="number" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Peso"
+                android:text="Peso (kg):"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
@@ -110,11 +115,12 @@
                 android:inputType="numberDecimal" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Altura:"
+                android:text="Altura (kg):"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
@@ -126,11 +132,12 @@
                 android:inputType="numberDecimal" />
 
             <TextView
+                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Contraseña"
+                android:text="Contraseña:"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
