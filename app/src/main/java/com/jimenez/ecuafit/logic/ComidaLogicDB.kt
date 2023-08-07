@@ -25,4 +25,7 @@ class ComidaLogicDB {
     suspend fun getAllComida():List<ComidaDB>{
         return EcuaFit.getDbInstance().comidaDao().getAllComida();
     }
+    suspend fun getAllComidaByFecha(fecha:Long):List<ComidaDB>{
+        return EcuaFit.getDbInstance().comidaDao().getAllComidaByDia(fecha);
+    }
 }

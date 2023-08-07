@@ -12,5 +12,7 @@ interface ComidaDAO {
     fun insertComida(c: ComidaDB)
     @Query("select * from ComidaDB")
     fun getAllComida():List<ComidaDB>
-
+    @Query("select * from ComidaDB where fecha=:date ")
+    fun getAllComidaByDia(date:Long):List<ComidaDB>
+    
 }

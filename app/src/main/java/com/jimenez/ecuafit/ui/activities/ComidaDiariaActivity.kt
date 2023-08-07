@@ -1,21 +1,21 @@
 package com.jimenez.ecuafit.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.jimenez.ecuafit.R
-import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.data.entities.ComidaDB
 import com.jimenez.ecuafit.databinding.ActivityComidaDiariaBinding
-import com.jimenez.ecuafit.logic.ComidaLogic
 import com.jimenez.ecuafit.logic.ComidaLogicDB
-import com.jimenez.ecuafit.ui.adapters.ComidaAdapter
 import com.jimenez.ecuafit.ui.adapters.ComidaDBAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.util.Date
+
 
 class ComidaDiariaActivity : AppCompatActivity() {
     private lateinit var binding:ActivityComidaDiariaBinding
@@ -32,15 +32,18 @@ class ComidaDiariaActivity : AppCompatActivity() {
         lmanager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         setContentView(binding.root)
-        chargeData()
+        val localDateTime = LocalDateTime.now()
+        val instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        val date = Date.from(instant)
+        chargeData(date)
     }
-    private fun chargeData() {
+    private fun chargeData(fecha:Date) {
 
 
         lifecycleScope.launch(Dispatchers.Main) {
             // progressBar.visibility = View.VISIBLE
             comidaItems = withContext(Dispatchers.IO) {
-                return@withContext ComidaLogicDB().getAllComida()
+                return@withContext ComidaLogicDB().getAllComidaByFecha(fecha.time)
 
 
             } as MutableList<ComidaDB>
