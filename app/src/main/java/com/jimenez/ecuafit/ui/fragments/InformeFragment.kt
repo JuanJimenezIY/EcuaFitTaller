@@ -7,14 +7,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.databinding.ActivityAguaBinding
 import com.jimenez.ecuafit.databinding.ActivityPesoBinding
 import com.jimenez.ecuafit.databinding.FragmentInformeBinding
+import com.jimenez.ecuafit.logic.ComidaLogicDB
 import com.jimenez.ecuafit.ui.activities.AguaActivity
 import com.jimenez.ecuafit.ui.activities.ComidaDiariaActivity
 import com.jimenez.ecuafit.ui.activities.PesoActivity
 import com.jimenez.ecuafit.ui.activities.RegistroActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.util.Date
+import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,8 +59,16 @@ class InformeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val localDateTime = LocalDateTime.now()
+        val instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        val date = Date.from(instant)
+        lifecycleScope.launch(Dispatchers.Main){
+            var comidaItems=withContext(Dispatchers.IO){
+                return@withContext ComidaLogicDB().getAllComidaByFecha(date)
 
-
+            }
+        }
+        var comidaDiaria=
         // Configurar el click listener para el CardView de Peso
         binding.pesoText.setOnClickListener {
             val intent = Intent(requireContext(), PesoActivity::class.java)

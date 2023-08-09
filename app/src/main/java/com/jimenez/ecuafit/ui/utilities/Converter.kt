@@ -17,7 +17,7 @@ class Converter {
     fun fromList(list: List<String>?): String? {
         return Gson().toJson(list)
     }
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
     @TypeConverter
     fun toTimestamp(value: String?): Date? {

@@ -12,7 +12,13 @@ interface ComidaDAO {
     fun insertComida(c: ComidaDB)
     @Query("select * from ComidaDB")
     fun getAllComida():List<ComidaDB>
+
+    @Query("select * from ComidaDB where nombre=:nombre")
+    fun getAllComidaByName(nombre:String):List<ComidaDB>
     @Query("select * from ComidaDB where fecha=:date ")
-    fun getAllComidaByDia(date:Long):List<ComidaDB>
+    fun getAllComidaByDia(date:String):List<ComidaDB>
+
+    @Query("UPDATE ComidaDB SET cantidad=:cantidad WHERE id = :id")
+    fun update(cantidad: Int?, id: Int)
     
 }

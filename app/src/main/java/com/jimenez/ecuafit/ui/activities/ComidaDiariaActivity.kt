@@ -43,7 +43,7 @@ class ComidaDiariaActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             // progressBar.visibility = View.VISIBLE
             comidaItems = withContext(Dispatchers.IO) {
-                return@withContext ComidaLogicDB().getAllComidaByFecha(fecha.time)
+                return@withContext ComidaLogicDB().getAllComidaByFecha(fecha)
 
 
             } as MutableList<ComidaDB>
