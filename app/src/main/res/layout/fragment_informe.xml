@@ -77,7 +77,7 @@
                 android:layout_gravity="center|bottom"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="50dp"
-                android:text="Consumidas: 2000 kcals"
+                android:text="Consumidas:            kcals"
 
                 >
 
@@ -133,7 +133,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:layout_marginStart="8dp"
-                android:text="110"
                 android:textSize="20dp">
 
             </TextView>
@@ -151,7 +150,7 @@
 
             <TextView
                 android:id="@+id/proteinasRes"
-                android:layout_width="wrap_content"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
                 android:layout_marginEnd="8dp"
@@ -207,7 +206,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:layout_marginStart="8dp"
-                android:text="180"
                 android:textSize="20dp">
 
             </TextView>
@@ -228,7 +226,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:layout_marginEnd="8dp"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="5dp"
                 android:text="250"
                 android:textSize="20dp">
 
@@ -281,7 +280,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:layout_marginStart="8dp"
-                android:text="60"
                 android:textSize="20dp">
 
             </TextView>
@@ -299,8 +297,9 @@
 
             <TextView
                 android:id="@+id/grasaRes"
-                android:layout_width="wrap_content"
+                android:layout_width="33dp"
                 android:layout_height="wrap_content"
+
                 android:layout_gravity="center|end"
                 android:layout_marginEnd="8dp"
                 android:text="70"

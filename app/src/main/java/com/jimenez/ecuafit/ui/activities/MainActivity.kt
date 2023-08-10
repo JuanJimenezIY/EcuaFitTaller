@@ -27,14 +27,13 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
     private val TAG = "UCE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         // Initialize Firebase Auth
-        auth = Firebase.auth
         setContentView(binding.root)
     }
 
@@ -57,14 +56,14 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     private fun initClass() {
 
-        binding.huellaDactilar.setOnClickListener{
+        binding.huellaDactilar.setOnClickListener {
             autenticateBiometric()
         }
 
         binding.btnLogin.setOnClickListener {
 
             if (binding.txtName.text.isNotEmpty() && binding.txtPassword.text.isNotEmpty()) {
-                logIn(binding.txtName.text.toString(),binding.txtPassword.text.toString())
+                logIn(binding.txtName.text.toString(), binding.txtPassword.text.toString())
             } else {
                 Snackbar.make(
                     binding.txtContraseA,
@@ -73,8 +72,8 @@ class MainActivity : AppCompatActivity() {
                 ).show()
 
             }
-           // binding.btnLogin.setBackgroundColor(R.color.boton_color)
-            binding.btnLogin.isEnabled=true
+            // binding.btnLogin.setBackgroundColor(R.color.boton_color)
+            binding.btnLogin.isEnabled = true
         }
         val appResultLocal =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultActivity ->
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     else -> {
-                        message="Resultado dudoso"
+                        message = "Resultado dudoso"
                     }
                 }
                 sn.setText(message.toString())
@@ -110,6 +109,7 @@ class MainActivity : AppCompatActivity() {
             appResultLocal.launch(intent)
         }
     }
+
     private fun autenticateBiometric() {
         if (checkBiometric()) {
             val executor = ContextCompat.getMainExecutor(this)
@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                         super.onAuthenticationSucceeded(result)
-                        startActivity(Intent(this@MainActivity,MenuActivity::class.java))
+                        startActivity(Intent(this@MainActivity, MenuActivity::class.java))
                     }
 
                     override fun onAuthenticationFailed() {
@@ -139,58 +139,59 @@ class MainActivity : AppCompatActivity() {
             biometricManager.authenticate(biometricPrompt)
         } else {
 
-            Snackbar.make(binding.huellaDactilar,"No existen los requisitos necesarios",Snackbar.LENGTH_LONG)
+            Snackbar.make(
+                binding.huellaDactilar,
+                "No existen los requisitos necesarios",
+                Snackbar.LENGTH_LONG
+            )
         }
     }
-    private fun checkBiometric() : Boolean{
-        var returnValid: Boolean=false
+
+    private fun checkBiometric(): Boolean {
+        var returnValid: Boolean = false
         val biometricManager = BiometricManager.from(this)
-        when(biometricManager.canAuthenticate(
+        when (biometricManager.canAuthenticate(
             BIOMETRIC_STRONG
-        )){
-            BiometricManager.BIOMETRIC_SUCCESS->{
-                returnValid= true
+        )) {
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                returnValid = true
             }
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE->{
-                returnValid= false
+
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                returnValid = false
             }
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE->{
-                returnValid= false
+
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                returnValid = false
             }
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED->{
+
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
                 val intentPrompt = Intent(Settings.ACTION_BIOMETRIC_ENROLL)
                 intentPrompt.putExtra(
                     Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
                     BIOMETRIC_STRONG or DEVICE_CREDENTIAL
                 )
                 startActivity(intentPrompt)
-                returnValid= false
+                returnValid = false
             }
         }
         return returnValid
     }
-    private fun logIn(email:String,password:String){
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication succesfull.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    val user = auth.currentUser
-                    //updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                  //  updateUI(null)
+
+    private fun logIn(email: String, password: String) {
+        db.collection("users").document(binding.txtName.text.toString()).get()
+            .addOnSuccessListener {
+                if (binding.txtPassword.text.toString() == it.get("contraseña")) {
+                    //Intents
+                    var intent = Intent(
+                        this, MenuActivity::class.java
+                    )
+                    intent.putExtra("correo",binding.txtName.text)
+                    startActivity(intent)
+
+                }
+                else{
+                    Snackbar.make(binding.txtContraseA,"Usuario o contraseña incorrectas",Snackbar.LENGTH_SHORT)
                 }
             }
     }

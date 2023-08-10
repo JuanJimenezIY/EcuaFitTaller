@@ -115,12 +115,12 @@
                 android:inputType="numberDecimal" />
 
             <TextView
-                style="@style/loginTextTitle"
                 android:id="@+id/textViewPasswordLabel3"
+                style="@style/loginTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Altura (kg):"
+                android:text="Altura (cm):"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 

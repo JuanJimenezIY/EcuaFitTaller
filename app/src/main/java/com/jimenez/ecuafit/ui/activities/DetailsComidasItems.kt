@@ -21,9 +21,9 @@ import kotlin.streams.toList
 
 class DetailsComidasItems : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsComidasItemsBinding
-    private var macroNut = listOf<String>("Carbs          "
-                                        , "Grasas        "
-                                        , "Proteinas    ")
+    private var macroNut = listOf<String>("Grasas          "
+                                        , "Proteinas        "
+                                        , "Carbs    ")
 
     private var values= listOf<String>()
     private var cantidad=1
@@ -57,7 +57,7 @@ class DetailsComidasItems : AppCompatActivity() {
                 item.micronutrientes
             )
 
-
+            binding.region.text=item.region
             binding.nombreComida.text = item.nombre
             binding.calorias.text = item.calorias.toString()
             Picasso.get().load(item.foto).into(binding.imagenComida)

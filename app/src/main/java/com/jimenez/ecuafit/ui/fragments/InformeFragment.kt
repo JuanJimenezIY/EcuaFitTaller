@@ -64,9 +64,11 @@ class InformeFragment : Fragment() {
 
             } as MutableList<ComidaDB>
             var sumaCalorias=comidaItems.sumOf { it.calorias }
-            var sumaProteinas=comidaItems.sumOf { it.macronutrientes[0].toDouble() }
-            var sumaCarbs=comidaItems.sumOf { it.macronutrientes[1].toDouble()  }
-            var sumaGrasas=comidaItems.sumOf { it.macronutrientes[2].toDouble()   }
+            var sumaGrasas=comidaItems.sumOf { it.macronutrientes[0].toDouble()   }
+
+            var sumaProteinas=comidaItems.sumOf { it.macronutrientes[1].toDouble() }
+
+            var sumaCarbs=comidaItems.sumOf { it.macronutrientes[2].toDouble()  }
 
             binding.calsConsumidas.text="Consumidas: " +sumaCalorias+ " kcals"
             binding.proteinasCons.text=sumaProteinas.toBigDecimal().setScale(0, RoundingMode.UP).toString()
