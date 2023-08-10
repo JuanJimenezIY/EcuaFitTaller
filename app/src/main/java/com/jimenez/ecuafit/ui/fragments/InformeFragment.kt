@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.jimenez.ecuafit.R
+import com.jimenez.ecuafit.data.entities.ComidaDB
 import com.jimenez.ecuafit.databinding.ActivityAguaBinding
 import com.jimenez.ecuafit.databinding.ActivityPesoBinding
 import com.jimenez.ecuafit.databinding.FragmentInformeBinding
@@ -20,6 +21,7 @@ import com.jimenez.ecuafit.ui.activities.RegistroActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -40,14 +42,40 @@ class InformeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
     private lateinit var binding: FragmentInformeBinding
+    private var comidaItems: MutableList<ComidaDB> = mutableListOf();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= FragmentInformeBinding.inflate(layoutInflater)
+        chargeData()
+
+
 
     }
 
+    fun chargeData(){
+        val localDateTime = LocalDateTime.now()
+        val instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        val date = Date.from(instant)
+        var task=lifecycleScope.launch(Dispatchers.Main){
+            comidaItems= withContext(Dispatchers.IO){
 
+                return@withContext ComidaLogicDB().getAllComidaByFecha(date)
+
+            } as MutableList<ComidaDB>
+            var sumaCalorias=comidaItems.sumOf { it.calorias }
+            var sumaProteinas=comidaItems.sumOf { it.macronutrientes[0].toDouble() }
+            var sumaCarbs=comidaItems.sumOf { it.macronutrientes[1].toDouble()  }
+            var sumaGrasas=comidaItems.sumOf { it.macronutrientes[2].toDouble()   }
+
+            binding.calsConsumidas.text="Consumidas: " +sumaCalorias+ " kcals"
+            binding.proteinasCons.text=sumaProteinas.toBigDecimal().setScale(0, RoundingMode.UP).toString()
+            binding.carbsCons.text=sumaCarbs.toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            binding.grasaCons.text=sumaGrasas.toBigDecimal().setScale(0,RoundingMode.UP).toString()
+
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,18 +85,15 @@ class InformeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val localDateTime = LocalDateTime.now()
-        val instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant()
-        val date = Date.from(instant)
-        lifecycleScope.launch(Dispatchers.Main){
-            var comidaItems=withContext(Dispatchers.IO){
-                return@withContext ComidaLogicDB().getAllComidaByFecha(date)
 
-            }
-        }
-        var comidaDiaria=
+
+
+        //var comidaDiaria=
         // Configurar el click listener para el CardView de Peso
         binding.pesoText.setOnClickListener {
             val intent = Intent(requireContext(), PesoActivity::class.java)
