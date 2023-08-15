@@ -186,7 +186,8 @@ class MainActivity : AppCompatActivity() {
                     var intent = Intent(
                         this, MenuActivity::class.java
                     )
-                    intent.putExtra("correo",binding.txtName.text)
+                    intent.putExtra("correo",binding.txtName.text.toString())
+
                     startActivity(intent)
 
                 }
@@ -195,4 +196,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+
 }
