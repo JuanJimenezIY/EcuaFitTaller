@@ -1,5 +1,6 @@
 package com.jimenez.ecuafit.ui.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,14 +11,18 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.ComidaDB
+import com.jimenez.ecuafit.data.entities.Usuario
+import com.jimenez.ecuafit.data.entities.UsuarioDB
 import com.jimenez.ecuafit.databinding.ActivityAguaBinding
 import com.jimenez.ecuafit.databinding.ActivityPesoBinding
 import com.jimenez.ecuafit.databinding.FragmentInformeBinding
 import com.jimenez.ecuafit.logic.ComidaLogicDB
 import com.jimenez.ecuafit.ui.activities.AguaActivity
 import com.jimenez.ecuafit.ui.activities.ComidaDiariaActivity
+import com.jimenez.ecuafit.ui.activities.MainActivity
 import com.jimenez.ecuafit.ui.activities.PesoActivity
 import com.jimenez.ecuafit.ui.activities.RegistroActivity
+import com.jimenez.ecuafit.ui.utilities.EcuaFit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -104,6 +109,52 @@ class InformeFragment : Fragment() {
         binding.infDiario.setOnClickListener {
             val intent=Intent(requireContext(),ComidaDiariaActivity::class.java)
             startActivity(intent)
+        }
+        binding.logOut.setOnClickListener{
+            logOut()
+        }
+        lifecycleScope.launch(Dispatchers.Main) { // Cambio a Dispatchers.Main
+            val calsRestantes = withContext(Dispatchers.IO) {
+                calcular(EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()).toString()
+            }
+
+            binding.calsRestantes.text = calsRestantes // Modificación en el hilo principal
+        }
+
+
+
+
+
+    }
+     fun logOut(){
+
+
+            lifecycleScope.launch (Dispatchers.Main){
+                withContext(Dispatchers.IO){
+                    EcuaFit.getDbUsuarioInstance().usuarioDao().deleteAll()
+                }
+            }
+            val sharedPref=requireContext().getSharedPreferences("sesion", Context.MODE_PRIVATE)
+         Log.d("UCE",sharedPref.getBoolean("estado_usu",false).toString())
+         with(sharedPref.edit()){
+             putBoolean("estado_usu",false)
+                 .apply()
+         }
+         Log.d("UCE",sharedPref.getBoolean("estado_usu",false).toString())
+
+         val intent=Intent(requireContext(),MainActivity::class.java)
+            startActivity(intent)
+
+
+    }
+    private fun calcular(usuario: UsuarioDB):Double{
+
+
+        if(usuario.genero.contains("mas")){
+            return 66.573+((13.751*usuario.peso[0].toDouble())+(5.0033*usuario.altura.toDouble())-(6.55*usuario.edad.toDouble()))
+        }
+        else{
+            return 0.1
         }
     }
 

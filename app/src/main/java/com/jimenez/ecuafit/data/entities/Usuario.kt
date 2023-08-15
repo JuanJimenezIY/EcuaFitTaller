@@ -5,11 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 
-data class Usuario(var calorias: Int,
-                   val descripcion: String,
-                   val foto: String,
-                   val macronutrientes: List<String>,
-                   val micronutrientes:List<String>,
+data class Usuario(var altura: String,
+                   val correo: String,
+                   val edad: String,
+                   val genero:String,
                    val nombre: String,
-                   val region: String): Parcelable {
+                   val peso: List<String>): Parcelable {
 }

@@ -36,17 +36,8 @@ class MenuActivity : AppCompatActivity() {
         super.onStart()
 
         initClass()
-        Log.d("UCE",intent.getStringExtra("correo")!!)
-
-        db.collection("users").document(intent.getStringExtra("correo")!!).get().addOnSuccessListener {
-            usuarioItems.add(it.get("peso").toString())
-            usuarioItems.add(it.get("genero").toString())
-            usuarioItems.add(it.get("altura").toString())
-            usuarioItems.add(it.get("edad").toString())
-            Log.d("UCE",usuarioItems.toString())
 
 
-        }
 
     }
 

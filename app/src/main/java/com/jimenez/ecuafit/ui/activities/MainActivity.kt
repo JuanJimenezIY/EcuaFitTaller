@@ -1,7 +1,9 @@
 package com.jimenez.ecuafit.ui.activities
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -21,8 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.databinding.ActivityMainBinding
+import com.jimenez.ecuafit.logic.UsuarioLogic
+import com.jimenez.ecuafit.logic.UsuarioLogicDB
+import com.jimenez.ecuafit.ui.utilities.EcuaFit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -35,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         // Initialize Firebase Auth
         setContentView(binding.root)
+        validarSesion()
     }
 
     override fun onStart() {
@@ -182,11 +189,19 @@ class MainActivity : AppCompatActivity() {
         db.collection("users").document(binding.txtName.text.toString()).get()
             .addOnSuccessListener {
                 if (binding.txtPassword.text.toString() == it.get("contraseña")) {
+                    guardarSesion()
+
+                    lifecycleScope.launch (Dispatchers.Main){
+                        withContext(Dispatchers.IO){
+                            UsuarioLogic().recuperarUsuario(binding.txtName.text.toString())
+
+                        }
+                    }
+
                     //Intents
                     var intent = Intent(
                         this, MenuActivity::class.java
                     )
-                    intent.putExtra("correo",binding.txtName.text)
                     startActivity(intent)
 
                 }
@@ -195,4 +210,24 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+    private fun guardarSesion(){
+        val sharedPref=getSharedPreferences("sesion",Context.MODE_PRIVATE)
+        val estado=true;
+        with(sharedPref.edit()){
+            putBoolean("estado_usu",estado)
+                .apply()
+        }
+
+
+    }
+    private fun validarSesion(){
+        val sharedPref=getSharedPreferences("sesion",Context.MODE_PRIVATE)
+        if(sharedPref.getBoolean("estado_usu",false)!=false){
+            var intent = Intent(
+                this, MenuActivity::class.java
+            )
+            startActivity(intent)
+
+    }
 }
+    }
