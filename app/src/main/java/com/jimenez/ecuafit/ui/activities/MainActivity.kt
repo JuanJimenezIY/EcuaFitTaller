@@ -202,6 +202,7 @@ class MainActivity : AppCompatActivity() {
                     var intent = Intent(
                         this, MenuActivity::class.java
                     )
+
                     startActivity(intent)
 
                 }
@@ -231,3 +232,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
     }
+

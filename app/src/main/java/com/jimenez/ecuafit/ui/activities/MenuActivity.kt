@@ -16,7 +16,6 @@ import com.jimenez.ecuafit.ui.utilities.FragmentsManager
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
-    private lateinit var intent:Intent
     private var usuarioItems: MutableList<String> = mutableListOf();
     private val db = FirebaseFirestore.getInstance()
 
@@ -26,7 +25,6 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        intent=getIntent()
         FragmentsManager().replaceFragment(
             supportFragmentManager,binding.frmContainer.id,InicioFragment()
         )
@@ -36,6 +34,12 @@ class MenuActivity : AppCompatActivity() {
         super.onStart()
 
         initClass()
+
+
+
+
+
+
 
 
 
@@ -74,6 +78,17 @@ class MenuActivity : AppCompatActivity() {
 
 
 
+        }
+    }
+    private fun calcular(genero:String,estatura:String,peso:String,edad:String):Double{
+        Log.d("UCE",estatura)
+        Log.d("UCE",edad)
+
+        if(genero.contains("mas")){
+            return 66.573+((13.751*peso.toDouble())+(5.0033*estatura.toDouble())-(6.55*edad.toDouble()))
+        }
+        else{
+            return 0.1
         }
     }
 }
