@@ -39,18 +39,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        // Initialize Firebase Auth
         setContentView(binding.root)
         validarSesion()
     }
 
     override fun onStart() {
         super.onStart()
-//        val currentUser = auth.currentUser
-//        if (currentUser != null) {
-//            reload()
-//        }
-
         initClass()
 
 

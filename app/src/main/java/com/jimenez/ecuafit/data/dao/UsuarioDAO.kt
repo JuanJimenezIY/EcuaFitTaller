@@ -16,8 +16,8 @@ interface UsuarioDAO {
     @Query("select * from UsuarioDB")
     fun getAll():UsuarioDB
 
-    @Query("UPDATE UsuarioDB SET peso=:peso WHERE id = :id")
-    fun update(peso: Int?, id: Int)
+    @Query("UPDATE UsuarioDB SET peso=:peso")
+    fun update(peso: List<String>)
     @Query("DELETE FROM UsuarioDB")
     fun deleteAll():Int
 }
