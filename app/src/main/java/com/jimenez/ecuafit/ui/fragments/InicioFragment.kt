@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.anychart.AnyChart
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
-import com.anychart.enums.TooltipPositionMode
 import com.jimenez.ecuafit.databinding.FragmentInicioBinding
 import com.jimenez.ecuafit.ui.utilities.EcuaFit
 import kotlinx.coroutines.Dispatchers
@@ -44,8 +43,8 @@ class InicioFragment : Fragment() {
         }
     }
     suspend fun chargeData(){
-        var contador = 0
         val line = AnyChart.line()
+
         line.animation(true)
        // line.crosshair().enabled(true)
         line.title("Historial de peso")
@@ -54,11 +53,9 @@ class InicioFragment : Fragment() {
             return@withContext EcuaFit.getDbUsuarioInstance().usuarioDao().getAll().peso
         }
         val data: MutableList<DataEntry> = ArrayList()
-
-        peso.stream().forEach {u->
-            data.add(ValueDataEntry(contador,u.toDouble()))
-            Log.d("UCE",u)
-            contador++;
+        val maxVisible=10
+        peso.takeLast(maxVisible).forEachIndexed {i,u->
+            data.add(ValueDataEntry(i,u.toDouble()))
         }
 
         line.data(data)
