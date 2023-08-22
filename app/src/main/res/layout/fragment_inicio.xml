@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:text="Progreso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+
         app:layout_constraintBottom_toTopOf="@+id/grafico"
 
         app:layout_constraintStart_toStartOf="parent"

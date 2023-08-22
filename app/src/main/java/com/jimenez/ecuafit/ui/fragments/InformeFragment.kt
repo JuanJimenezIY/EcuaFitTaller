@@ -1,5 +1,6 @@
 package com.jimenez.ecuafit.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -68,15 +69,15 @@ class InformeFragment : Fragment() {
                     calcular(EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()).toString()
                 }
             val caloriasRestantes=calsTotales.toDouble()-sumaCalorias
-                binding.calsRestantes.text = caloriasRestantes.toString() // Modificación en el hilo principal
+                binding.calsRestantes.text = String.format("%.2f", caloriasRestantes) // Modificación en el hilo principal
                 binding.procentaje.text=((caloriasRestantes*100)/calsTotales.toDouble()).toBigDecimal().setScale(0,RoundingMode.UP).toString()
             if(binding.calsRestantes.text.toString().toDouble()<0&&binding.procentaje.text.toString().toDouble()<0){
                 binding.calsRestantes.text = "0"
                 binding.procentaje.text="0"
             }
-            binding.proteinasRes.text=((calsTotales.toDouble()*0.11)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            binding.carbsRes.text=((calsTotales.toDouble()*0.54)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            binding.grasaRes.text=((calsTotales.toDouble()*0.35)/9).toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            binding.proteinasRes.text=((calsTotales.toDouble()*0.30)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            binding.carbsRes.text=((calsTotales.toDouble()*0.45)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            binding.grasaRes.text=((calsTotales.toDouble()*0.25)/9).toBigDecimal().setScale(0,RoundingMode.UP).toString()
 
         }
 
@@ -118,6 +119,7 @@ class InformeFragment : Fragment() {
         }
 
     }
+     @SuppressLint("SuspiciousIndentation")
      fun logOut(){
 
             lifecycleScope.launch (Dispatchers.Main){

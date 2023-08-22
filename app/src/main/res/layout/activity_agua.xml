@@ -36,11 +36,12 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginHorizontal="50dp"
+
         android:layout_marginTop="125dp"
 
 
-        app:layout_constraintStart_toEndOf="@+id/boton_menos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalAgua"
         app:srcCompat="@drawable/awa" />
 
@@ -63,12 +64,12 @@
         android:id="@+id/boton_menos"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:tintMode="@color/color_complementario"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/principal_color_ej"
         android:src="@drawable/menos"
-        app:layout_constraintStart_toStartOf="parent"
+        android:tintMode="@color/color_complementario"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@id/totalAgua">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

@@ -14,10 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/color_boton"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tituloInforme"
         style="@style/titulos"
@@ -47,6 +48,7 @@
             android:layout_width="230dp"
             android:layout_height="230dp"
             app:cardCornerRadius="200dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +73,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="90%"
+                android:text=""
+                android:textSize="60sp"
+                android:textStyle="bold"
+
+                >
+
+            </TextView>
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="%"
+                android:layout_marginStart="70dp"
                 android:textSize="60sp"
                 android:textStyle="bold"
 
@@ -93,17 +109,47 @@
             </TextView>
 
             <TextView
-                android:id="@+id/calsRestantes"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|bottom"
+                android:layout_gravity="left|bottom"
+                android:layout_marginStart="38dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
-                android:text="Restantes: 200 kcals"
+                android:text="Restantes:"
 
                 >
 
             </TextView>
+
+            <TextView
+                android:id="@+id/calsRestantes"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="right|bottom"
+                android:layout_marginEnd="70dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="2000"
+
+                >
+
+            </TextView>
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginEnd="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text=" kcals"
+
+                >
+
+            </TextView>
+
         </androidx.cardview.widget.CardView>
 
 
@@ -113,10 +159,11 @@
         android:id="@+id/cardProteina"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="25dp"
+       android:layout_marginEnd="20dp"
         android:backgroundTint="#C56A94"
         app:cardCornerRadius="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cardCarbs"
+
         app:layout_constraintTop_toBottomOf="@id/caloriasCons">
 
         <androidx.cardview.widget.CardView
@@ -163,7 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
                 android:layout_marginEnd="8dp"
-                android:text="140"
+                android:text=""
                 android:textSize="20dp">
 
             </TextView>
@@ -186,17 +233,20 @@
         android:id="@+id/cardCarbs"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="25dp"
+
         android:layout_marginTop="20dp"
         android:backgroundTint="#81667A"
         app:cardCornerRadius="100dp"
-        app:layout_constraintStart_toEndOf="@+id/cardProteina"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/caloriasCons">
 
         <androidx.cardview.widget.CardView
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
+
             app:cardCornerRadius="90dp">
 
             <TextView
@@ -235,9 +285,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:paddingStart="10dp"
                 android:layout_marginEnd="5dp"
-                android:text="250"
+                android:paddingStart="10dp"
+                android:text=""
                 android:textSize="20dp">
 
             </TextView>
@@ -335,7 +385,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:clickable="true"
         app:cardCornerRadius="15dp"
         app:cardBackgroundColor="@color/card_background"

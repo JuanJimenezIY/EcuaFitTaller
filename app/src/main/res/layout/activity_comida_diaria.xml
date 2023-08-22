@@ -11,17 +11,20 @@
         android:id="@+id/tituloComida"
         style="@style/titulos"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Comidas del día"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvComidas"
         android:layout_width="match_parent"
-        android:layout_height="750dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tituloComida" />
+        app:layout_constraintTop_toBottomOf="@id/tituloComida"
+        app:layout_constraintVertical_bias="0.247" />
 </androidx.constraintlayout.widget.ConstraintLayout>
