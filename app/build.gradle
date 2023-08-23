@@ -75,7 +75,9 @@ dependencies {
 
     implementation "com.github.AnyChart:AnyChart-Android:1.1.5"
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
-
+    //Chat gpt
+    implementation 'com.aallam.openai:openai-client:3.3.0'
+    implementation("io.ktor:ktor-client-android:2.3.3")
 
 
 
