@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,9 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <TextView
         style="@style/titulos"
         android:id="@+id/titulo"
@@ -23,47 +25,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/listView"
-        android:layout_width="390dp"
-        android:layout_height="500dp"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchComida"
+        android:layout_width="match_parent"
         android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
 
-        android:orientation="vertical"
-
+        android:background="@drawable/searchview_rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/titulo">
+        app:layout_constraintTop_toBottomOf="@id/titulo">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchComida"
-            android:layout_width="375dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+    </androidx.appcompat.widget.SearchView>
 
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/searchview_rounded"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toBottomOf="@id/titulo">
-
-        </androidx.appcompat.widget.SearchView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvComidas"
 
+
             android:layout_width="match_parent"
-            android:layout_height="435dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="20dp"
             android:background="@color/white"
             android:backgroundTint="@color/principal_color_ej"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
 
-            />
+            app:layout_constraintTop_toBottomOf="@+id/searchComida">
 
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/lyMainCopia"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchComida"
+
+
+        >
+
+        <include layout="@layout/shimmer_layout_comida"></include>
+
+        <include layout="@layout/shimmer_layout_comida"></include>
+
+        <include layout="@layout/shimmer_layout_comida"></include>
+
+        <include layout="@layout/shimmer_layout_comida"></include>
+
+        <include layout="@layout/shimmer_layout_comida"></include>
 
     </LinearLayout>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardAgua"
         android:layout_width="match_parent"
@@ -76,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listView">
+        app:layout_constraintTop_toBottomOf="@id/rvComidas">
         <LinearLayout
             android:id="@+id/agua"
             android:layout_width="match_parent"
@@ -105,4 +126,7 @@
 
     </androidx.cardview.widget.CardView>
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

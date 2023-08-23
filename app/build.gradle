@@ -76,6 +76,9 @@ dependencies {
     implementation "com.github.AnyChart:AnyChart-Android:1.1.5"
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
 
+    //vista previa
+    implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
+
 
 
 

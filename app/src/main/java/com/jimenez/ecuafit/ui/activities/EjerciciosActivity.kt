@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
@@ -50,11 +51,16 @@ val intent=Intent(Intent.ACTION_VIEW, Uri.parse(ejercicio.video))
 
         lifecycleScope.launch(Dispatchers.Main) {
             // progressBar.visibility = View.VISIBLE
+
+            binding.lyEjercicioCopia.visibility = View.VISIBLE
+            binding.rvEjercicios.visibility = View.INVISIBLE
             ejercicioItems = withContext(Dispatchers.IO) {
                 return@withContext EjercicioLogic().getAllEjercicios()
 
 
             } as MutableList<Ejercicio>
+            binding.lyEjercicioCopia.visibility = View.GONE
+            binding.rvEjercicios.visibility = View.VISIBLE
             if (ejercicioItems.size == 0) {
                 var f = Snackbar.make(binding.textView4, "No se encontro", Snackbar.LENGTH_LONG)
 

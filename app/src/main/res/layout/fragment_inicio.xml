@@ -28,7 +28,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/grafico"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="220dp"
         android:layout_margin="10dp"
         android:orientation="horizontal"
         app:cardBackgroundColor="@color/card_background"
@@ -125,12 +125,22 @@
 
             <TextView
                 android:id="@+id/txtPesoInicio"
-                android:layout_width="175dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/color_complementario"
                 android:gravity="center"
-                android:text=" +0.5 kg"
+                android:text=""
+                android:textStyle="bold"
+                android:textSize="30sp" />
+            <TextView
+
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+
+                android:textColor="@color/color_complementario"
+                android:gravity="center"
+                android:text="kg"
                 android:textStyle="bold"
                 android:textSize="30sp" />
 
@@ -141,7 +151,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="80dp"
         android:layout_margin="10dp"
         android:orientation="horizontal"
         app:cardBackgroundColor="@color/card_background"
@@ -153,37 +163,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:background="#7CACAC"
 
             >
 
             <TextView
-                android:layout_width="175dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Historial "
-                android:textColor="@color/color_complementario"
-                android:textSize="30sp" />
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="1900 cals     04/19"
-                android:textColor="@color/color_complementario"
-                android:textSize="30sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+
                 android:gravity="center"
-                android:text="2200 cals     04/18"
+                android:text="   Plan Premium "
                 android:textColor="@color/color_complementario"
                 android:textSize="30sp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:src="@drawable/premium"
+                android:layout_gravity="center"
+
+                >
+
+            </ImageView>
+
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     private fun initClass() {
 
-        binding.huellaDactilar.setOnClickListener {
+        binding.contrasenaOlvidada.setOnClickListener {
             autenticateBiometric()
         }
 
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         } else {
 
             Snackbar.make(
-                binding.huellaDactilar,
+                binding.contrasenaOlvidada,
                 "No existen los requisitos necesarios",
                 Snackbar.LENGTH_LONG
             )
