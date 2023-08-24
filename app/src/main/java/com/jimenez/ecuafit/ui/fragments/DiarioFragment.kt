@@ -81,6 +81,7 @@ class DiarioFragment : Fragment() {
         var d=lifecycleScope.launch(Dispatchers.Main){
             withContext(Dispatchers.IO){
                 ComidaLogicDB().insertComida(item, 1 ,Date())
+
             }
         }
 
