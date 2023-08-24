@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,10 @@
 
     android:background="@drawable/comida_backgorund"
     android:padding="16dp">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
         style="@style/titulos"
         android:id="@+id/tituloDetail"
@@ -16,18 +19,19 @@
 
         android:layout_height="wrap_content"
         android:textColor="@color/fondo_login"
-        android:text="Información"
+        android:text="Información Nutricional"
      />
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="270dp">
+    android:layout_height="250dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:cardCornerRadius="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +64,12 @@
 
         android:textColor="@color/principal_color_ej"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"/>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="horizontal"
 
@@ -149,7 +153,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="150dp"
+            android:layout_width="175dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -207,5 +211,5 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
 </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

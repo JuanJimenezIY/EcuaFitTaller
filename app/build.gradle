@@ -79,6 +79,10 @@ dependencies {
     implementation 'com.aallam.openai:openai-client:3.3.0'
     implementation("io.ktor:ktor-client-android:2.3.3")
 
+    //vista previa
+    implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
+    implementation 'com.google.firebase:firebase-config:21.4.1'
+    implementation("at.favre.lib:bcrypt:0.10.2")
 
 
 }

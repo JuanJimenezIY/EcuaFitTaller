@@ -9,7 +9,9 @@ import com.aallam.openai.api.chat.ChatCompletion
 import com.aallam.openai.api.chat.ChatCompletionRequest
 import com.aallam.openai.api.chat.ChatMessage
 import com.aallam.openai.api.chat.ChatRole
+import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.api.model.ModelId
+import com.aallam.openai.client.LoggingConfig
 import com.aallam.openai.client.OpenAI
 
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,11 +23,11 @@ import com.jimenez.ecuafit.ui.fragments.InicioFragment
 import com.jimenez.ecuafit.ui.utilities.FragmentsManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
 
-    private lateinit var openAI: OpenAI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,32 +36,13 @@ class MenuActivity : AppCompatActivity() {
         FragmentsManager().replaceFragment(
             supportFragmentManager,binding.frmContainer.id,InicioFragment()
         )
-        openAI = OpenAI("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")
+
 
     }
-    @OptIn(BetaOpenAI::class)
     override fun onStart() {
         super.onStart()
 
         initClass()
-        val chatCompletionRequest = ChatCompletionRequest(
-            model = ModelId("gpt-3.5-turbo"),
-            messages = listOf(
-                ChatMessage(
-                    role = ChatRole.System,
-                    content = "You are a helpful assistant!"
-                ),
-                ChatMessage(
-                    role = ChatRole.User,
-                    content = "Hello!"
-                )
-            )
-        )
-        lifecycleScope.launch(Dispatchers.Main){
-            val completion: ChatCompletion = openAI.chatCompletion(chatCompletionRequest)
-            Log.d("GPT", completion.toString())
-
-        }
 
 // or, as flow
         //val completions: kotlinx.coroutines.flow.Flow<ChatCompletionChunk> = openAI.chatCompletions(chatCompletionRequest)
@@ -109,6 +92,7 @@ class MenuActivity : AppCompatActivity() {
 
 
         }
+
     }
 
 }

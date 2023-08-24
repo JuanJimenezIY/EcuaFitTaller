@@ -116,23 +116,22 @@ class DiarioFragment : Fragment() {
 
         lifecycleScope.launch(Dispatchers.Main) {
             // progressBar.visibility = View.VISIBLE
+            binding.lyMainCopia.visibility = View.VISIBLE
+            binding.rvComidas.visibility = View.INVISIBLE
+
             comidaItems = withContext(Dispatchers.IO) {
                 return@withContext ComidaLogic().getAllComida()
 
 
             } as MutableList<Comida>
+            binding.lyMainCopia.visibility = View.GONE
+            binding.rvComidas.visibility = View.VISIBLE
             if (comidaItems.size == 0) {
                 var f = Snackbar.make(binding.titulo, "No se encontro", Snackbar.LENGTH_LONG)
 
                 f.show()
             }
             rvAdapter.items = comidaItems
-
-
-
-
-
-
 
             binding.rvComidas.apply {
                 this.adapter = rvAdapter

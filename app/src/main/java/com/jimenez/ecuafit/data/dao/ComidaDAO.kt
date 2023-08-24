@@ -20,5 +20,8 @@ interface ComidaDAO {
 
     @Query("UPDATE ComidaDB SET cantidad=:cantidad WHERE id = :id")
     fun update(cantidad: Int?, id: Int)
+
+    @Query("DELETE FROM ComidaDB")
+    fun deleteAll()
     
 }

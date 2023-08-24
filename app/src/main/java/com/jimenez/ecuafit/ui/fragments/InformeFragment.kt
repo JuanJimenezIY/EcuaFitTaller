@@ -43,41 +43,58 @@ class InformeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= FragmentInformeBinding.inflate(layoutInflater)
+        binding = FragmentInformeBinding.inflate(layoutInflater)
         chargeData()
     }
 
-    fun chargeData(){
+    fun chargeData() {
         val localDateTime = LocalDateTime.now()
         val instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant()
         val date = Date.from(instant)
-        var task=lifecycleScope.launch(Dispatchers.Main){
-            comidaItems= withContext(Dispatchers.IO){
+        var task = lifecycleScope.launch(Dispatchers.Main) {
+            comidaItems = withContext(Dispatchers.IO) {
                 return@withContext ComidaLogicDB().getAllComidaByFecha(date)
             } as MutableList<ComidaDB>
-            var sumaCalorias=comidaItems.sumOf { it.calorias }
-            var sumaGrasas=comidaItems.sumOf { it.macronutrientes[0].toDouble()   }
-            var sumaProteinas=comidaItems.sumOf { it.macronutrientes[1].toDouble() }
-            var sumaCarbs=comidaItems.sumOf { it.macronutrientes[2].toDouble()  }
-            binding.calsConsumidas.text="Consumidas: " +sumaCalorias+ " kcals"
-            binding.proteinasCons.text=sumaProteinas.toBigDecimal().setScale(0, RoundingMode.UP).toString()
-            binding.carbsCons.text=sumaCarbs.toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            binding.grasaCons.text=sumaGrasas.toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            var sumaCalorias = comidaItems.sumOf { it.calorias }
+            var sumaGrasas = comidaItems.sumOf { it.macronutrientes[0].toDouble() }
+            var sumaProteinas = comidaItems.sumOf { it.macronutrientes[1].toDouble() }
+            var sumaCarbs = comidaItems.sumOf { it.macronutrientes[2].toDouble() }
+            binding.calsConsumidas.text = "Consumidas: " + sumaCalorias + " kcals"
+            binding.proteinasCons.text =
+                sumaProteinas.toBigDecimal().setScale(0, RoundingMode.UP).toString()
+            binding.carbsCons.text =
+                sumaCarbs.toBigDecimal().setScale(0, RoundingMode.UP).toString()
+            binding.grasaCons.text =
+                sumaGrasas.toBigDecimal().setScale(0, RoundingMode.UP).toString()
 
             // Cambio a Dispatchers.Main
-                val calsTotales = withContext(Dispatchers.IO) {
-                    calcular(EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()).toString()
-                }
-            val caloriasRestantes=calsTotales.toDouble()-sumaCalorias
-                binding.calsRestantes.text = String.format("%.2f", caloriasRestantes) // Modificación en el hilo principal
-                binding.procentaje.text=((caloriasRestantes*100)/calsTotales.toDouble()).toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            if(binding.calsRestantes.text.toString().toDouble()<0&&binding.procentaje.text.toString().toDouble()<0){
-                binding.calsRestantes.text = "0"
-                binding.procentaje.text="0"
+            val calsTotales = withContext(Dispatchers.IO) {
+                calcular(EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()).toString()
             }
-            binding.proteinasRes.text=((calsTotales.toDouble()*0.30)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            binding.carbsRes.text=((calsTotales.toDouble()*0.45)/4).toBigDecimal().setScale(0,RoundingMode.UP).toString()
-            binding.grasaRes.text=((calsTotales.toDouble()*0.25)/9).toBigDecimal().setScale(0,RoundingMode.UP).toString()
+            val caloriasRestantes = calsTotales.toDouble() - sumaCalorias
+            binding.calsRestantes.text =
+                String.format("%.2f", caloriasRestantes) // Modificación en el hilo principal
+            binding.procentaje.text =
+                (100 - ((caloriasRestantes * 100) / calsTotales.toDouble())).toBigDecimal()
+                    .setScale(0, RoundingMode.UP).toString()
+            if (binding.calsRestantes.text.toString()
+                    .toDouble() < 0 && binding.procentaje.text.toString().toDouble() < 0
+            ) {
+                binding.calsRestantes.text = "0"
+                binding.procentaje.text = "0"
+            }
+            if(binding.procentaje.text.toString().toDouble()>100){
+                binding.procentaje.text="100"
+            }
+            binding.proteinasRes.text =
+                ((calsTotales.toDouble() * 0.30) / 4).toBigDecimal().setScale(0, RoundingMode.UP)
+                    .toString()
+            binding.carbsRes.text =
+                ((calsTotales.toDouble() * 0.45) / 4).toBigDecimal().setScale(0, RoundingMode.UP)
+                    .toString()
+            binding.grasaRes.text =
+                ((calsTotales.toDouble() * 0.25) / 9).toBigDecimal().setScale(0, RoundingMode.UP)
+                    .toString()
 
         }
 
@@ -94,9 +111,9 @@ class InformeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 
         //var comidaDiaria=
@@ -106,41 +123,43 @@ class InformeFragment : Fragment() {
             startActivity(intent)
         }
         binding.infDiario.setOnClickListener {
-            val intent=Intent(requireContext(),ComidaDiariaActivity::class.java)
+            val intent = Intent(requireContext(), ComidaDiariaActivity::class.java)
             startActivity(intent)
         }
-        binding.logOut.setOnClickListener{
+        binding.logOut.setOnClickListener {
             logOut()
         }
         binding.cardEjercicios.setOnClickListener {
-            val intent=Intent(requireContext(),EjerciciosActivity::class.java)
+            val intent = Intent(requireContext(), EjerciciosActivity::class.java)
             startActivity(intent)
 
         }
 
     }
-     @SuppressLint("SuspiciousIndentation")
-     fun logOut(){
 
-            lifecycleScope.launch (Dispatchers.Main){
-                withContext(Dispatchers.IO){
-                    EcuaFit.getDbUsuarioInstance().usuarioDao().deleteAll()
-                }
+    @SuppressLint("SuspiciousIndentation")
+    fun logOut() {
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                EcuaFit.getDbUsuarioInstance().usuarioDao().deleteAll()
+                EcuaFit.getDbInstance().comidaDao().deleteAll()
             }
-            val sharedPref=requireContext().getSharedPreferences("sesion", Context.MODE_PRIVATE)
-         with(sharedPref.edit()){
-             putBoolean("estado_usu",false)
-                 .apply()
-         }
-         val intent=Intent(requireContext(),MainActivity::class.java)
-            startActivity(intent)
-    }
-    private fun calcular(usuario: UsuarioDB):Double{
-        if(usuario.genero.contains("mas")){
-            return 66.47+((13.75*usuario.peso[usuario.peso.size-1].toDouble())+(5*usuario.altura.toDouble())-(6.76*usuario.edad.toDouble()))
         }
-        else{
-            return 65.51+((9.56*usuario.peso[usuario.peso.size-1].toDouble())+(1.85*usuario.altura.toDouble())-(4.68*usuario.edad.toDouble()))
+        val sharedPref = requireContext().getSharedPreferences("sesion", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("estado_usu", false)
+                .apply()
+        }
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun calcular(usuario: UsuarioDB): Double {
+        if (usuario.genero.contains("mas")) {
+            return 66.47 + ((13.75 * usuario.peso[usuario.peso.size - 1].toDouble()) + (5 * usuario.altura.toDouble()) - (6.76 * usuario.edad.toDouble()))
+        } else {
+            return 65.51 + ((9.56 * usuario.peso[usuario.peso.size - 1].toDouble()) + (1.85 * usuario.altura.toDouble()) - (4.68 * usuario.edad.toDouble()))
         }
     }
 

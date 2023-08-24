@@ -18,6 +18,6 @@ interface UsuarioDAO {
 
     @Query("UPDATE UsuarioDB SET peso=:peso")
     fun update(peso: List<String>)
-    @Query("DELETE FROM UsuarioDB")
+    @Query("DELETE  FROM UsuarioDB")
     fun deleteAll():Int
 }

@@ -1,5 +1,6 @@
 package com.jimenez.ecuafit.ui.adapters
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.Comida
 import com.jimenez.ecuafit.databinding.LayoutComidasBinding
-import java.util.Date
 
 
 class ComidaAdapter(
@@ -21,6 +21,7 @@ class ComidaAdapter(
     RecyclerView.Adapter<ComidaAdapter.ComidaViewHolder>() {
 
     var items: List<Comida> = listOf()
+
 
     class ComidaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding: LayoutComidasBinding = LayoutComidasBinding.bind(view)
@@ -58,6 +59,9 @@ class ComidaAdapter(
         viewType: Int
     ): ComidaAdapter.ComidaViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+
+
+
         return ComidaViewHolder(
             inflater.inflate(
                 R.layout.layout_comidas,
@@ -83,5 +87,6 @@ class ComidaAdapter(
         notifyDataSetChanged()
 
     }
+
 
 }

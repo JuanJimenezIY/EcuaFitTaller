@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
@@ -21,13 +22,14 @@ import com.jimenez.ecuafit.ui.fragments.DialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+import kotlin.streams.toList
 
 
 class EjerciciosActivity : AppCompatActivity() {
     private lateinit var binding:ActivityEjerciciosBinding
     private lateinit var lmanager: LinearLayoutManager
     private var ejercicioItems: MutableList<Ejercicio> = mutableListOf();
+    private lateinit var searchView: SearchView
 
     //  private lateinit var progressBar:ProgressBar
     private var rvAdapter: EjercicioAdapter = EjercicioAdapter (::openVideo )
@@ -36,6 +38,8 @@ class EjerciciosActivity : AppCompatActivity() {
         binding=ActivityEjerciciosBinding.inflate(layoutInflater)
         lmanager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 chargeData()
+        searchView = binding.searchEjercicios
+
         setContentView(binding.root)
     }
     fun openVideo(ejercicio: Ejercicio) {
@@ -44,17 +48,35 @@ val intent=Intent(Intent.ACTION_VIEW, Uri.parse(ejercicio.video))
 
     override fun onStart() {
         super.onStart()
+        binding.searchEjercicios.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                val filteredList = ejercicioItems.stream()
+                    .filter { item -> item.nombre.lowercase().contains(newText.lowercase()) }
+                    .toList()
+                rvAdapter.replaceListAdapter(filteredList )
+                return true
+            }
+        })
     }
     private fun chargeData() {
 
 
         lifecycleScope.launch(Dispatchers.Main) {
             // progressBar.visibility = View.VISIBLE
+
+            binding.lyEjercicioCopia.visibility = View.VISIBLE
+            binding.rvEjercicios.visibility = View.INVISIBLE
             ejercicioItems = withContext(Dispatchers.IO) {
                 return@withContext EjercicioLogic().getAllEjercicios()
 
 
             } as MutableList<Ejercicio>
+            binding.lyEjercicioCopia.visibility = View.GONE
+            binding.rvEjercicios.visibility = View.VISIBLE
             if (ejercicioItems.size == 0) {
                 var f = Snackbar.make(binding.textView4, "No se encontro", Snackbar.LENGTH_LONG)
 
