@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@id/pesoCard"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_margin="15dp"
         android:backgroundTint="@color/card_background"
@@ -21,6 +21,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -56,7 +57,7 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addComida"
-                android:layout_width="match_parent"
+                android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/color_boton"

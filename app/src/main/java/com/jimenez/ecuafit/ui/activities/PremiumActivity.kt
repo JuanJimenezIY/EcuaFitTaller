@@ -31,7 +31,7 @@ class PremiumActivity : AppCompatActivity() {
         binding = ActivityPremiumBinding.inflate(layoutInflater)
         setContentView(binding.root)
         openAI = OpenAI(
-            token = "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", timeout =
+            token = "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", timeout =
             Timeout(socket = 60.seconds)
         )
     }
