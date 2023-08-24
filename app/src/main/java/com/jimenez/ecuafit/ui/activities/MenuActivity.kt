@@ -44,18 +44,6 @@ class MenuActivity : AppCompatActivity() {
 
         initClass()
 
-// or, as flow
-        //val completions: kotlinx.coroutines.flow.Flow<ChatCompletionChunk> = openAI.chatCompletions(chatCompletionRequest)
-
-
-
-
-
-
-
-
-
-
     }
 
     private fun initClass(){

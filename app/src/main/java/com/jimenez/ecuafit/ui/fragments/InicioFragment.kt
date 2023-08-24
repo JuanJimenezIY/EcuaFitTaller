@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.aallam.openai.api.http.Timeout
-import com.aallam.openai.client.OpenAI
+
 import com.anychart.AnyChart
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
@@ -26,12 +25,10 @@ import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Date
-import kotlin.time.Duration.Companion.seconds
 
 
 class InicioFragment : Fragment() {
     private lateinit var binding: FragmentInicioBinding
-    private lateinit var openAI: OpenAI
     private lateinit var line: Cartesian
     private var comidaItems: MutableList<ComidaDB> = mutableListOf();
 
@@ -47,10 +44,7 @@ class InicioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        openAI = OpenAI(
-            token = "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", timeout =
-            Timeout(socket = 60.seconds)
-        )
+
         line = AnyChart.line()
         line.animation(true)
         // line.crosshair().enabled(true)
