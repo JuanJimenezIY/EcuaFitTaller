@@ -21,9 +21,9 @@ import kotlin.streams.toList
 
 class DetailsComidasItems : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsComidasItemsBinding
-    private var macroNut = listOf<String>("Grasas          "
-                                        , "Proteinas        "
-                                        , "Carbs    ")
+    private var macroNut = listOf<String>("Grasas        "
+                                        , "Proteinas   "
+                                        , "Carbs         ")
 
     private var values= listOf<String>()
     private var cantidad=1
