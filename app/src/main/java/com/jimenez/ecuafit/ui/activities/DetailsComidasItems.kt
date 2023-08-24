@@ -3,6 +3,7 @@ package com.jimenez.ecuafit.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
@@ -61,6 +62,7 @@ class DetailsComidasItems : AppCompatActivity() {
             binding.nombreComida.text = item.nombre
             binding.calorias.text = item.calorias.toString()
             Picasso.get().load(item.foto).into(binding.imagenComida)
+
         }
         binding.btnAddComida.setOnClickListener {
             if (item != null) {
