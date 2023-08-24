@@ -11,6 +11,7 @@ import com.aallam.openai.api.chat.ChatMessage
 import com.aallam.openai.api.chat.ChatRole
 import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.api.model.ModelId
+import com.aallam.openai.client.LoggingConfig
 import com.aallam.openai.client.OpenAI
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.UsuarioDB
@@ -30,21 +31,25 @@ class PremiumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPremiumBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         openAI = OpenAI(
-            token = "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", timeout =
-            Timeout(socket = 60.seconds)
+            "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", LoggingConfig(),Timeout(socket = 120.seconds)
         )
     }
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch(Dispatchers.Main){
-            var user= withContext(Dispatchers.IO){
-               EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
+        lifecycleScope.launch(Dispatchers.Main) {
+            var user = withContext(Dispatchers.IO) {
+                EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
             }
             generaReporte(user)
 
         }
+    }
+
+    fun msg() {
+
     }
 
     @OptIn(BetaOpenAI::class)
@@ -56,12 +61,12 @@ class PremiumActivity : AppCompatActivity() {
                 ChatMessage(
                     role = ChatRole.Assistant,
                     content = "Damer recomedaciones bien detalldas dieta y ejercicios especificos para mejorar mi estado fisico actualmente mido "
-                            + usuarioDB.altura + ",peso "+usuarioDB.peso[0]+",soy de genero "+usuarioDB.genero+" y tengo "+usuarioDB.edad+
-                            " años de edad calcula mi requerimiento calorico diario y dame recomendaciones"
+                            + usuarioDB.altura + ",peso " + usuarioDB.peso[0] + ",soy de genero " + usuarioDB.genero + " y tengo " + usuarioDB.edad +
+                            " años de edad calcula mi requerimiento calorico diario con nivel de actividad fisica baja y dame recomendaciones"
                 )
             )
         )
         val completion: ChatCompletion = openAI.chatCompletion((chatCompletionRequest))
-        Log.d("UCE",completion.choices.toString())
+        Log.d("UCE", completion.choices.toString())
     }
 }
