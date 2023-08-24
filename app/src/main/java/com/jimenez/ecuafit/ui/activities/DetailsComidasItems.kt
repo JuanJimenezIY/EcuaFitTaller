@@ -3,6 +3,7 @@ package com.jimenez.ecuafit.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
@@ -21,9 +22,9 @@ import kotlin.streams.toList
 
 class DetailsComidasItems : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsComidasItemsBinding
-    private var macroNut = listOf<String>("Grasas          "
-                                        , "Proteinas        "
-                                        , "Carbs    ")
+    private var macroNut = listOf<String>("Grasas        "
+                                        , "Proteinas   "
+                                        , "Carbs         ")
 
     private var values= listOf<String>()
     private var cantidad=1
@@ -61,6 +62,7 @@ class DetailsComidasItems : AppCompatActivity() {
             binding.nombreComida.text = item.nombre
             binding.calorias.text = item.calorias.toString()
             Picasso.get().load(item.foto).into(binding.imagenComida)
+
         }
         binding.btnAddComida.setOnClickListener {
             if (item != null) {

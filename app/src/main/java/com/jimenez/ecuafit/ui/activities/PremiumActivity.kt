@@ -34,6 +34,7 @@ class PremiumActivity : AppCompatActivity() {
 
         openAI = OpenAI(
             "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", LoggingConfig(),Timeout(socket = 120.seconds)
+
         )
     }
 

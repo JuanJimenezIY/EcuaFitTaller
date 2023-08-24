@@ -17,7 +17,7 @@
     <!-- TextView para el título de la página -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="650dp">
+        android:layout_height="800dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Genero:"
+                android:text="Género:"
                 android:textColor="@color/color_complementario"
                 android:textSize="18sp" />
 
@@ -151,18 +151,20 @@
                 android:hint="Ingresa tu contraseña"
                 android:inputType="textPassword" />
 
+            <Button
+                android:id="@+id/buttonRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+
+                android:backgroundTint="@color/principal_color_ej"
+                android:text="Registrar" />
         </LinearLayout>
+
     </ScrollView>
 
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
 
-        android:backgroundTint="@color/principal_color_ej"
-        android:text="Registrar" />
 
     <!-- TextView y EditText para el nombre -->
 
