@@ -156,10 +156,10 @@ class InformeFragment : Fragment() {
     }
 
     private fun calcular(usuario: UsuarioDB): Double {
-        if (usuario.genero.contains("mas")) {
-            return 66.47 + ((13.75 * usuario.peso[usuario.peso.size - 1].toDouble()) + (5 * usuario.altura.toDouble()) - (6.76 * usuario.edad.toDouble()))
+        if (usuario.genero.contains("masculino")||usuario.genero.contains("Masculino")) {
+            return (88.363 + ((13.397 * usuario.peso[usuario.peso.size - 1].toDouble()) + (4.7 * usuario.altura.toDouble()) - (5.66 * usuario.edad.toDouble())))*1.5
         } else {
-            return 65.51 + ((9.56 * usuario.peso[usuario.peso.size - 1].toDouble()) + (1.85 * usuario.altura.toDouble()) - (4.68 * usuario.edad.toDouble()))
+            return (447.593 + ((9.247 * usuario.peso[usuario.peso.size - 1].toDouble()) + (3.08 * usuario.altura.toDouble()) - (4.68 * usuario.edad.toDouble())))*1.5
         }
     }
 

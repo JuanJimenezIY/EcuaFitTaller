@@ -23,6 +23,8 @@ class RegistroActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+
         binding.buttonRegister.setOnClickListener {
 
             if(validar()){
