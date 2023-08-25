@@ -51,6 +51,13 @@ class PremiumActivity : AppCompatActivity() {
                         valor, LoggingConfig(),Timeout(socket = 120.seconds)
 
                     )
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        var user = withContext(Dispatchers.IO) {
+                            EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
+                        }
+                        generaReporte(user)
+
+                    }
                     // Utiliza el valor en tu app
                 } else {
                     // Maneja el fallo de fetch
@@ -64,13 +71,7 @@ class PremiumActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch(Dispatchers.Main) {
-            var user = withContext(Dispatchers.IO) {
-                EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
-            }
-            generaReporte(user)
 
-        }
         binding.facebook.setOnClickListener {
             val facebookPackageName = "com.facebook.katana" // El paquete de la aplicación de Facebook
 
