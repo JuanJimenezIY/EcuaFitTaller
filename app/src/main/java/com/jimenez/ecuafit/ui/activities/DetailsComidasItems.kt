@@ -27,7 +27,6 @@ class DetailsComidasItems : AppCompatActivity() {
                                         , "Carbs         ")
 
     private var values= listOf<String>()
-    private var cantidad=1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsComidasItemsBinding.inflate(layoutInflater)

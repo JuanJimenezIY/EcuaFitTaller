@@ -19,4 +19,9 @@ class UsuarioLogicDB {
     suspend fun getUsuario(correo:String):UsuarioDB{
         return EcuaFit.getDbUsuarioInstance().usuarioDao().getUsuarioByCorreo(correo)
     }
+    suspend fun deleteAll(){
+        EcuaFit.getDbUsuarioInstance().usuarioDao().deleteAll()
+
+    }
+
 }

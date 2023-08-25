@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +24,8 @@ import com.jimenez.ecuafit.ui.activities.AguaActivity
 import com.jimenez.ecuafit.ui.activities.DetailsComidasItems
 import com.jimenez.ecuafit.ui.adapters.ComidaAdapter
 import com.jimenez.ecuafit.ui.utilities.EcuaFit
+import com.jimenez.ecuafit.ui.viewmodels.ComidaViewModel
+import com.jimenez.ecuafit.ui.viewmodels.EjerciciosViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,10 +36,10 @@ import kotlin.streams.toList
 class DiarioFragment : Fragment() {
     private lateinit var binding: FragmentDiarioBinding
     private lateinit var lmanager: LinearLayoutManager
-    private var comidaItems: MutableList<Comida> = mutableListOf();
+    private val comidaViewModel by viewModels<ComidaViewModel>()
 
     //  private lateinit var progressBar:ProgressBar
-    private var rvAdapter: ComidaAdapter = ComidaAdapter ( ::sendComidaItem, ::saveComida)
+    private var rvAdapter: ComidaAdapter = ComidaAdapter(::sendComidaItem, ::saveComida)
     private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,11 +81,12 @@ class DiarioFragment : Fragment() {
         }
         return binding.root
     }
-    fun saveComida(item:Comida):Boolean{
-        Log.d("UCE",item.nombre)
-        var d=lifecycleScope.launch(Dispatchers.Main){
-            withContext(Dispatchers.IO){
-                ComidaLogicDB().insertComida(item, 1 ,Date())
+
+    fun saveComida(item: Comida): Boolean {
+        Log.d("UCE", item.nombre)
+        var d = lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                ComidaLogicDB().insertComida(item, 1, Date())
             }
         }
 
@@ -95,12 +101,18 @@ class DiarioFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                val filteredList = comidaItems.stream()
-                    .filter { item -> item.nombre.lowercase().contains(newText.lowercase()) }
-                    .toList()
-                rvAdapter.replaceListAdapter(filteredList )
+
+                val filteredList = comidaViewModel.filterComida(
+                    comidaViewModel.comidaItemsLiveData.value ?: emptyList(), newText
+                )
+
+                rvAdapter.replaceListAdapter(filteredList)
+
+
+
                 return true
             }
+
         })
     }
 
@@ -112,35 +124,26 @@ class DiarioFragment : Fragment() {
     }
 
     private fun chargeData() {
+        comidaViewModel.progressState.observe(this) {
+            binding.lyMainCopia.visibility = it
 
+        }
 
-        lifecycleScope.launch(Dispatchers.Main) {
-            // progressBar.visibility = View.VISIBLE
-            binding.lyMainCopia.visibility = View.VISIBLE
-            binding.rvComidas.visibility = View.INVISIBLE
-
-            comidaItems = withContext(Dispatchers.IO) {
-                return@withContext ComidaLogic().getAllComida()
-
-
-            } as MutableList<Comida>
-            binding.lyMainCopia.visibility = View.GONE
-            binding.rvComidas.visibility = View.VISIBLE
-            if (comidaItems.size == 0) {
-                var f = Snackbar.make(binding.titulo, "No se encontro", Snackbar.LENGTH_LONG)
-
-                f.show()
-            }
+        comidaViewModel.comidaItemsLiveData.observe(this, Observer { comidaItems ->
             rvAdapter.items = comidaItems
-
             binding.rvComidas.apply {
                 this.adapter = rvAdapter
                 //  this.layoutManager = lmanager
                 this.layoutManager = lmanager
             }
-            // progressBar.visibility = View.GONE
 
+        })
+        comidaViewModel.progressState.observe(this) {
+            binding.lyMainCopia.visibility = it
 
+        }
+        lifecycleScope.launch(Dispatchers.IO) {
+            comidaViewModel.loadComida()
         }
     }
 }

@@ -8,6 +8,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jimenez.ecuafit.databinding.ActivityRegistroBinding
+import com.jimenez.ecuafit.ui.utilities.SessionManager
 
 class RegistroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistroBinding
@@ -25,18 +26,19 @@ class RegistroActivity : AppCompatActivity() {
         super.onStart()
         binding.buttonRegister.setOnClickListener {
 
-            if(validar()){
-                val res = db.collection("users").document(binding.editTextEmail.text.toString()).set(
-                    hashMapOf(
-                        "altura" to binding.editTextAltura.text.toString(),
-                        "correo" to binding.editTextEmail.text.toString(),
-                        "edad" to binding.editTextEdad.text.toString(),
-                        "genero" to binding.editTextGenero.text.toString(),
-                        "nombre" to binding.editTextName.text.toString(),
-                        "peso" to listOf(binding.editTextPeso.text.toString()),
-                        "contraseña" to encryptPass(binding.editTextContraseA.text.toString())
+            if (validar()) {
+                val res =
+                    db.collection("users").document(binding.editTextEmail.text.toString()).set(
+                        hashMapOf(
+                            "altura" to binding.editTextAltura.text.toString(),
+                            "correo" to binding.editTextEmail.text.toString(),
+                            "edad" to binding.editTextEdad.text.toString(),
+                            "genero" to binding.editTextGenero.text.toString(),
+                            "nombre" to binding.editTextName.text.toString(),
+                            "peso" to listOf(binding.editTextPeso.text.toString()),
+                            "contraseña" to SessionManager.encryptPass(binding.editTextContraseA.text.toString())
+                        )
                     )
-                )
                 res.addOnCompleteListener {
                     if (it.isSuccessful) {
                         Snackbar.make(
@@ -46,32 +48,18 @@ class RegistroActivity : AppCompatActivity() {
                         ).show()
 
                     }
-                    val i=Intent()
-                    i.putExtra("result","Resultado Exitoso")
-                    setResult(RESULT_OK,i)
+                    val i = Intent()
+                    i.putExtra("result", "Resultado Exitoso")
+                    setResult(RESULT_OK, i)
                     finish()
                 }
             }
-
 
 
         }
     }
 
 
-
-
-
-    fun encryptPass(pass: String): String {
-
-        var bcryptHashString = BCrypt.withDefaults().hashToString(12, pass.toCharArray());
-        // var result = BCrypt.verifyer().verify(pass.toCharArray(), bcryptHashString);
-        return bcryptHashString    }
-
-
-    fun disableAll() {
-        binding.buttonRegister.isEnabled = false
-    }
     fun validar(): Boolean {
         val campos = arrayOf(
             binding.editTextEmail,

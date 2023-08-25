@@ -107,8 +107,8 @@ class AguaActivity : AppCompatActivity() {
     private fun createNotificationChannel() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Variedades"
-            val descriptionText = "Notificaciones simples de variedades"
+            val name = "Ecuafit"
+            val descriptionText = "Notificaciones recordatorios"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(CHANNEL, name, importance).apply {
                 description = descriptionText

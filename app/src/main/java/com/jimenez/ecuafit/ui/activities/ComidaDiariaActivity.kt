@@ -18,17 +18,15 @@ import java.util.Date
 
 
 class ComidaDiariaActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityComidaDiariaBinding
+    private lateinit var binding: ActivityComidaDiariaBinding
     private var comidaItems: MutableList<ComidaDB> = mutableListOf();
-    private var rvAdapter: ComidaDBAdapter = ComidaDBAdapter ()
+    private var rvAdapter: ComidaDBAdapter = ComidaDBAdapter()
     private lateinit var lmanager: LinearLayoutManager
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityComidaDiariaBinding.inflate(layoutInflater)
+        binding = ActivityComidaDiariaBinding.inflate(layoutInflater)
         lmanager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         setContentView(binding.root)
@@ -37,7 +35,8 @@ class ComidaDiariaActivity : AppCompatActivity() {
         val date = Date.from(instant)
         chargeData(date)
     }
-    private fun chargeData(fecha:Date) {
+
+    private fun chargeData(fecha: Date) {
 
 
         lifecycleScope.launch(Dispatchers.Main) {
@@ -48,7 +47,7 @@ class ComidaDiariaActivity : AppCompatActivity() {
 
             } as MutableList<ComidaDB>
             if (comidaItems.size == 0) {
-                var f = Snackbar.make(binding.root, "No se encontro", Snackbar.LENGTH_LONG)
+                var f = Snackbar.make(binding.root, "No hay datos", Snackbar.LENGTH_LONG)
 
                 f.show()
             }

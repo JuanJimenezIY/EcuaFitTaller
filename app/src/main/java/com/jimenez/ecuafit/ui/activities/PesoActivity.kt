@@ -1,5 +1,6 @@
 package com.jimenez.ecuafit.ui.activities
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -47,19 +48,12 @@ class PesoActivity : AppCompatActivity() {
 
 
     }
+    @SuppressLint("SuspiciousIndentation")
     suspend fun actualizarPeso() {
         val nuevoPeso=binding.peso.text.toString()
 
-
-
-
             withContext(Dispatchers.IO){
                 EcuaFit.getDbUsuarioInstance().usuarioDao().update(usuario.peso.plus(nuevoPeso))
-
             }
-
-
-
-
     }
 }

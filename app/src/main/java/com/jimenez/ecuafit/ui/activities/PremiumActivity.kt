@@ -1,10 +1,13 @@
 package com.jimenez.ecuafit.ui.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.aallam.openai.api.BetaOpenAI
+import com.aallam.openai.api.chat.ChatChoice
 import com.aallam.openai.api.chat.ChatCompletion
 import com.aallam.openai.api.chat.ChatCompletionRequest
 import com.aallam.openai.api.chat.ChatMessage
@@ -13,6 +16,9 @@ import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.LoggingConfig
 import com.aallam.openai.client.OpenAI
+import com.google.firebase.FirebaseApp
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.UsuarioDB
 import com.jimenez.ecuafit.databinding.ActivityPremiumBinding
@@ -32,10 +38,28 @@ class PremiumActivity : AppCompatActivity() {
         binding = ActivityPremiumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        openAI = OpenAI(
-            "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", LoggingConfig(),Timeout(socket = 120.seconds)
 
-        )
+        FirebaseApp.initializeApp(this)
+
+        val remoteConfig = FirebaseRemoteConfig.getInstance()
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Fetch exitoso y valores activados
+                    val valor = remoteConfig.getString("api_key")
+                    openAI = OpenAI(
+                        valor, LoggingConfig(),Timeout(socket = 120.seconds)
+
+                    )
+                    // Utiliza el valor en tu app
+                } else {
+                    // Maneja el fallo de fetch
+                }
+            }
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setMinimumFetchIntervalInSeconds(3600) // Intervalo mínimo entre actualizaciones
+            .build()
+        remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
     override fun onStart() {
@@ -47,11 +71,27 @@ class PremiumActivity : AppCompatActivity() {
             generaReporte(user)
 
         }
+        binding.facebook.setOnClickListener {
+            val facebookPackageName = "com.facebook.katana" // El paquete de la aplicación de Facebook
+
+            try {
+                val intent = packageManager.getLaunchIntentForPackage(facebookPackageName)
+                if (intent != null) {
+                    startActivity(intent)
+                } else {
+                    // Si la aplicación de Facebook no está instalada
+                    // Puedes abrir la página en el navegador web u ofrecer instalar la aplicación
+                    // Por ejemplo:
+                    val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/"))
+                    startActivity(webIntent)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Maneja cualquier excepción que pueda ocurrir al abrir la aplicación
+            }
+        }
     }
 
-    fun msg() {
-
-    }
 
     @OptIn(BetaOpenAI::class)
     suspend fun generaReporte(usuarioDB: UsuarioDB) {
@@ -68,6 +108,11 @@ class PremiumActivity : AppCompatActivity() {
             )
         )
         val completion: ChatCompletion = openAI.chatCompletion((chatCompletionRequest))
-        Log.d("UCE", completion.choices.toString())
+        completion.choices.forEach {
+
+            Log.d("UCE", it.message?.content.toString())
+        }
+        binding.chatGPT.text=completion.choices[0].message?.content.toString()
+
     }
 }

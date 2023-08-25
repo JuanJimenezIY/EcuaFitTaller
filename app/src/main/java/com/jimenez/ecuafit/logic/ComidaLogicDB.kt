@@ -49,4 +49,7 @@ class ComidaLogicDB {
     suspend fun actualizarComida(){
         return
     }
+    suspend fun deleteAll(){
+        EcuaFit.getDbInstance().comidaDao().deleteAll()
+    }
 }

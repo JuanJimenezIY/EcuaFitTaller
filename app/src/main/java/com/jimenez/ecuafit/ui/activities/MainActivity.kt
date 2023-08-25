@@ -3,6 +3,7 @@ package com.jimenez.ecuafit.ui.activities
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,7 +18,8 @@ import at.favre.lib.crypto.bcrypt.BCrypt
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jimenez.ecuafit.databinding.ActivityMainBinding
-import com.jimenez.ecuafit.logic.UsuarioLogic
+import com.jimenez.ecuafit.logic.UsuarioLogicFire
+import com.jimenez.ecuafit.ui.utilities.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -27,28 +29,32 @@ class MainActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private val TAG = "UCE"
+    private lateinit var sharedPref: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        validarSesion()
+        sharedPref = getSharedPreferences("sesion", Context.MODE_PRIVATE)
+
     }
 
     override fun onStart() {
         super.onStart()
+
         initClass()
-
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     @SuppressLint("ResourceAsColor")
     private fun initClass() {
 
+        if (SessionManager.validarSesion(sharedPref)) {
+            var intent = Intent(
+                this, MenuActivity::class.java
+            )
+            startActivity(intent)
+        }
         binding.contrasenaOlvidada.setOnClickListener {
             autenticateBiometric()
         }
@@ -85,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     else -> {
-                        message = "Resultado dudoso"
+                        message = "Registro dudoso"
                     }
                 }
                 sn.setText(message.toString())
@@ -173,67 +179,46 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SuspiciousIndentation")
     private fun logIn(email: String, password: String) {
-        val con=db.collection("users").document(binding.txtName.text.toString()).get()
-            con.addOnSuccessListener {
+        val con = db.collection("users").document(email).get()
+        con.addOnSuccessListener {
 
-                if(con.result.data!=null){
-                    if (comprobar(binding.txtPassword.text.toString(), it.getString("contraseña"))) {
-                        guardarSesion()
-                        lifecycleScope.launch (Dispatchers.Main){
-                            withContext(Dispatchers.IO){
-                                UsuarioLogic().recuperarUsuario(binding.txtName.text.toString())
+            if (con.result.data != null) {
+                if (SessionManager.comprobar(password, it.getString("contraseña"))) {
+                    SessionManager.guardarSesion(sharedPref)
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        withContext(Dispatchers.IO) {
+                            UsuarioLogicFire().recuperarUsuario(email)
 
-                            }
                         }
-
-                        //Intents
-                        var intent = Intent(
-                            this, MenuActivity::class.java
-                        )
-
-                        startActivity(intent)
-
                     }
-                    else {
+
+                    //Intents
+                    var intent = Intent(
+                        this, MenuActivity::class.java
+                    )
+
+                    startActivity(intent)
+
+                } else {
 
 
-                        Snackbar.make(binding.txtContraseA,"Usuario o contraseña incorrectas",Snackbar.LENGTH_SHORT).show()
-                    }
+                    Snackbar.make(
+                        binding.txtContraseA,
+                        "Usuario o contraseña incorrectas",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
-                else{
-                    Snackbar.make(binding.txtContraseA,"Usuario no existe",Snackbar.LENGTH_SHORT).show()
-                }
-
+            } else {
+                Snackbar.make(binding.txtContraseA, "Usuario no existe", Snackbar.LENGTH_SHORT)
+                    .show()
             }
 
-    }
-    private fun guardarSesion(){
-        val sharedPref=getSharedPreferences("sesion",Context.MODE_PRIVATE)
-        val estado=true;
-        with(sharedPref.edit()){
-            putBoolean("estado_usu",estado)
-                .apply()
         }
 
-
-    }
-    private fun validarSesion(){
-        val sharedPref=getSharedPreferences("sesion",Context.MODE_PRIVATE)
-        if(sharedPref.getBoolean("estado_usu",false)!=false){
-            var intent = Intent(
-                this, MenuActivity::class.java
-            )
-            startActivity(intent)
-
-    }
-}
-    private fun comprobar(pass: String, hash: String?): Boolean {
-        val hashBytes = hash?.toByteArray() ?: return false
-        var result = BCrypt.verifyer().verify(pass.toCharArray(), hashBytes).verified
-        return result
-
-
     }
 
 }
+
+
+
 
