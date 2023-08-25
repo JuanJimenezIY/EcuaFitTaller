@@ -5,17 +5,21 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de kas pe
 
 ## Caracteristicas
 
--Gestion del consumo de agua diaria
+- Uso de Fragments para el manejo de ventanas en la aplicación
 
--Seguimiento de comidas con sus calorias y macronutriesntes diarios
+- Gestion del consumo de agua diaria
 
--Gestion de peso corporal 
+- Seguimiento de comidas con sus calorias y macronutriesntes diarios
 
--Lista de ejercicios para el usuario
+- Uso de AnyChart para manejo de tabla de datos del peso del usuario
 
--Plan de ejercicios con ayuda de Inteligencia Artificial
-## Requisitos
+- Gestion de peso corporal y guardado de comidas usando base de dato local 
 
-Acceso a internet
+- Lista de ejercicios para el usuario generada en Firebase
 
-## Uso de la aplicación
+- Plan de ejercicios con ayuda de Inteligencia Artificial OpenAI ChatGPT
+## Librerias
+
+
+
+## Capturas de pantall de la aplicación
