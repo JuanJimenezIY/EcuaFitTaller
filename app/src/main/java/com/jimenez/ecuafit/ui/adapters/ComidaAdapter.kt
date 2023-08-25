@@ -41,8 +41,10 @@ class ComidaAdapter(
                 fnClick(item)
             }
             binding.addComida.setOnClickListener {
+
                 fnSave(item)
-                Snackbar.make(binding.addComida,"Comida agregada", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.addComida,"Comida agregada", Snackbar.LENGTH_LONG).show()
+
             }
             //boton vista marvel chars
             //  binding.b{

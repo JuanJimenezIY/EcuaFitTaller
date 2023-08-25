@@ -83,6 +83,7 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
     implementation 'com.google.firebase:firebase-config:21.4.1'
     implementation("at.favre.lib:bcrypt:0.10.2")
+
 //para los view models
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -97,5 +98,8 @@ dependencies {
     // LiveData - datos que se van a asociar alviewmodel para poder usarlos
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
     implementation 'com.google.firebase:firebase-config:20.0.1'
+
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
 
 }

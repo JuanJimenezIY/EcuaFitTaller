@@ -28,7 +28,7 @@ class BroadcasterNotifications : BroadcastReceiver() {
         val noti = NotificationCompat.Builder(context, CHANNEL)
             .setContentTitle("Recordatorio agua")
             .setContentText("Tienes una notificacion")
-            .setSmallIcon(R.drawable.face_icon)
+            .setSmallIcon(R.drawable.awa)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setStyle(NotificationCompat.BigTextStyle().bigText("Toma awa >:v"))
             .setContentIntent(pendingIntent)

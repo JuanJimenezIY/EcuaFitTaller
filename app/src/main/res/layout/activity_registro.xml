@@ -80,7 +80,7 @@
                 android:id="@+id/editTextGenero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu género"
+                android:hint="Masculino o Femenino"
                 android:inputType="text" />
 
             <TextView

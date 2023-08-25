@@ -20,6 +20,7 @@
         <item name="android:textStyle">bold</item>
 
     </style>
+
     <style name="loginTextTitle" >
 
 
