@@ -2,6 +2,11 @@
 
 Ecuafit es una aplicación para la gestión de la nutrición y ejercicio de las personas enfocadas en la vida fitness
 
+##Integrantes
+
+- Antony Arguello
+- Juan Jiménez
+
 ## Características
 
 - Registro y login mediante Firebase 
