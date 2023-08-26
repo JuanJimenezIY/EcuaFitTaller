@@ -10,7 +10,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 
 - Arquitectura MVVM
 
-- Gestion del consumo de agua diaria en base de datos local
+- Gestion del consumo de agua diaria usando shared preference
 
 - Seguimiento de comidas con sus calorias y macronutriesntes diarios obtenidas de base de datos hecha en Firebase
 
