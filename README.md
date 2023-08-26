@@ -4,7 +4,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 
 ## Caracteristicas
 
--Registro y login mediante Firebase 
+- Registro y login mediante Firebase 
 
 - Uso de Fragments para el manejo de ventanas en la aplicación
 
