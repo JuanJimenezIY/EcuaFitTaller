@@ -2,7 +2,7 @@
 
 Ecuafit es una aplicación para la gestión de la nutrición y ejercicio de las personas enfocadas en la vida fitness
 
-##Integrantes
+## Integrantes
 
 - Antony Arguello
 - Juan Jiménez
