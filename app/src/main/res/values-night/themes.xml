@@ -3,6 +3,11 @@
     <style name="Base.Theme.EcuaFit" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">@color/color_boton</item>
+
+        <item name="colorPrimary">@color/color_complementario</item>
+
+
     </style>
 
     <style name="loginTextTitle" >

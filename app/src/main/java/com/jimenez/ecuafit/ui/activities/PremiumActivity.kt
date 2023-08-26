@@ -5,6 +5,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import androidx.lifecycle.lifecycleScope
 import com.aallam.openai.api.BetaOpenAI
 import com.aallam.openai.api.chat.ChatChoice
@@ -41,32 +43,7 @@ class PremiumActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
 
-        val remoteConfig = FirebaseRemoteConfig.getInstance()
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Fetch exitoso y valores activados
-                    val valor = remoteConfig.getString("api_key")
-                    openAI = OpenAI(
-                        valor, LoggingConfig(),Timeout(socket = 120.seconds)
 
-                    )
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        var user = withContext(Dispatchers.IO) {
-                            EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
-                        }
-                        generaReporte(user)
-
-                    }
-                    // Utiliza el valor en tu app
-                } else {
-                    // Maneja el fallo de fetch
-                }
-            }
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds(3600) // Intervalo mínimo entre actualizaciones
-            .build()
-        remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
     override fun onStart() {
@@ -91,6 +68,39 @@ class PremiumActivity : AppCompatActivity() {
                 // Maneja cualquier excepción que pueda ocurrir al abrir la aplicación
             }
         }
+        binding.lyChatCopia.visibility = View.INVISIBLE
+        binding.plan.setOnClickListener {
+
+            binding.lyChatCopia.visibility = View.VISIBLE
+
+            val remoteConfig = FirebaseRemoteConfig.getInstance()
+            remoteConfig.fetchAndActivate()
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Fetch exitoso y valores activados
+                        val valor = remoteConfig.getString("api_key")
+                        openAI = OpenAI(
+                            valor, LoggingConfig(),Timeout(socket = 120.seconds)
+
+                        )
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            var user = withContext(Dispatchers.IO) {
+                                EcuaFit.getDbUsuarioInstance().usuarioDao().getAll()
+                            }
+                            generaReporte(user)
+
+                        }
+                        // Utiliza el valor en tu app
+                    } else {
+                        // Maneja el fallo de fetch
+                    }
+                }
+            val configSettings = FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(3600) // Intervalo mínimo entre actualizaciones
+                .build()
+            remoteConfig.setConfigSettingsAsync(configSettings)
+        }
+
     }
 
 
@@ -102,7 +112,7 @@ class PremiumActivity : AppCompatActivity() {
 
                 ChatMessage(
                     role = ChatRole.Assistant,
-                    content = "Damer recomedaciones bien detalldas dieta y ejercicios especificos para mejorar mi estado fisico actualmente mido "
+                    content = "Dame recomedaciones bien detalldas dieta y ejercicios especificos para mejorar mi estado fisico actualmente mido "
                             + usuarioDB.altura + ",peso " + usuarioDB.peso[0] + ",soy de genero " + usuarioDB.genero + " y tengo " + usuarioDB.edad +
                             " años de edad calcula mi requerimiento calorico diario con nivel de actividad fisica baja y dame recomendaciones"
                 )
@@ -113,7 +123,11 @@ class PremiumActivity : AppCompatActivity() {
 
             Log.d("UCE", it.message?.content.toString())
         }
+
+
+
         binding.chatGPT.text=completion.choices[0].message?.content.toString()
+        binding.lyChatCopia.visibility = View.GONE
 
     }
 }

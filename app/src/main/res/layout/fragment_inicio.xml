@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:text="1200 cals"
+
                 android:textColor="@color/color_complementario"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -176,9 +176,9 @@
 
 
                 android:gravity="center"
-                android:text="   Plan Premium "
+                android:text="Asesoria Premium"
                 android:textColor="@color/color_complementario"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
