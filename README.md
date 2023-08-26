@@ -20,7 +20,9 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de kas pe
 - Plan de ejercicios con ayuda de Inteligencia Artificial OpenAI ChatGPT
 ## Librerias
 ## Capturas de pantalla de la aplicación
-![Screenshot_2023-08-25-20-17-21-155_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/5ceee075-6d82-49cb-83c0-7f20d6b53e78)
+<img src="![Screenshot_2023-08-25-20-17-21-155_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/5ceee075-6d82-49cb-83c0-7f20d6b53e78)" alt="Texto alternativo" width="300" />
+
+
 ![Screenshot_2023-08-25-20-18-11-187_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/79b80c09-b69e-4d48-a4f1-baf0694c8868)
 ![Screenshot_2023-08-25-20-17-04-721_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/783eb668-90fb-4aa6-aa01-8f9273692e4c)
 ![Screenshot_2023-08-25-20-17-07-845_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/c6825bb5-ff2d-4da6-b1a6-31dc205cad93)
