@@ -59,9 +59,9 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 | ![Pantalla comidas dia](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/f9f9db75-8e04-4366-8c1c-e2d9fe1e8580)|  ![Pantalla ejercicios](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/520c9c31-6e6c-4195-84cd-6a158ac8ae15)   |![Screenshot_2023-08-25-22-24-26-749_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ec2b09a1-0b5d-4704-9fbe-4662e899e781) |![Screenshot_2023-08-25-22-21-48-153_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/59ab26a5-0f39-447a-a5a2-7192ce3486e3)|
 |----------|:-------------:|:-------------:|:-------------:|
 
-Notificación de recordatorio de tomar aguaa
+Notificación de recordatorio de tomar agua
 
-<img src="https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/cfa774df-e149-4145-9af4-233e375c88e7" alt="Imagen" width="300" height="650">
+<img src="https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/cfa774df-e149-4145-9af4-233e375c88e7" alt="Imagen" width="200" height="550">
 
 
 
