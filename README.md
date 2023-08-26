@@ -2,7 +2,7 @@
 
 Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las personas enfocadas en la vida fitness
 
-## Caracteristicas
+## Características
 
 - Registro y login mediante Firebase 
 
@@ -31,7 +31,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 - Uso de Room para el manejo de base de datos
 
 - Uso de fecha para guardar comida por días
-## Librerias
+## Librerías
 
 - Retrofit
 - ViewModel
@@ -42,21 +42,20 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 - Room
 - AnyChart
 - OpenAI
-- bicomettric (por ver)
 - Shimmer
 - Fragment
 
 
 ## Capturas de pantalla de la aplicación
 
-|![Login](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ce45b76e-1378-4c28-8ca3-13727d33c4e0) |![Pantalla Inicio](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/783eb668-90fb-4aa6-aa01-8f9273692e4c)   | ![Pantalla asesoria](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/67b2e389-cb43-4d1a-9e1f-33c93b542bc5) |![Pantalla Diario](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/c6825bb5-ff2d-4da6-b1a6-31dc205cad93) |
+|Registrarse para poder iniciar sesión en la aplicación![Login](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ce45b76e-1378-4c28-8ca3-13727d33c4e0) |En esta pantalla se musetra el numero de calorías del dia y el peso subido o bajado cuando se actualice el peso![Pantalla Inicio](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/783eb668-90fb-4aa6-aa01-8f9273692e4c)   |Esta pantalla muestra asesoria generada por chatGPT con los datos de regitro de usuario ![Pantalla asesoria](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/67b2e389-cb43-4d1a-9e1f-33c93b542bc5) |En esta pantalla se muestran las comidas disponibles para agregar con un buscador![Pantalla Diario](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/c6825bb5-ff2d-4da6-b1a6-31dc205cad93) |
 |----------|:-------------:|:-------------:|:-------------:|
 
-|![Pantalla Agua](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/79b80c09-b69e-4d48-a4f1-baf0694c8868) |![Pantalla comida](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/d5c76402-999c-4997-9fd7-e37340b02667)  |![Pantalla informe](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/4e4e0675-2821-4ede-bde1-883a79638a9b) |![Pantalla Peso](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/5ceee075-6d82-49cb-83c0-7f20d6b53e78) |
+|En esta pantalla se pueden agregar vasos de agua tomados en el día![Pantalla Agua](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/79b80c09-b69e-4d48-a4f1-baf0694c8868) |Aquí se muestra la información de la comida seleccionada, la cual se puede agregar por la porción elegida![Pantalla comida](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/d5c76402-999c-4997-9fd7-e37340b02667)  |Aquí se encuentra el informe de calorias diarios ademas de un boton para cerrar sesión![Pantalla informe](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/4e4e0675-2821-4ede-bde1-883a79638a9b) |En esta pantalla se puede agregar el peso  actual de la persona la cual tendra un historial![Pantalla Peso](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/5ceee075-6d82-49cb-83c0-7f20d6b53e78) |
 |----------|:-------------:|:-------------:|:-------------:|
 
 
-| ![Pantalla comidas dia](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/f9f9db75-8e04-4366-8c1c-e2d9fe1e8580)|  ![Pantalla ejercicios](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/520c9c31-6e6c-4195-84cd-6a158ac8ae15)   |![Screenshot_2023-08-25-22-24-26-749_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ec2b09a1-0b5d-4704-9fbe-4662e899e781) |![Screenshot_2023-08-25-22-21-48-153_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/59ab26a5-0f39-447a-a5a2-7192ce3486e3)|
+|Las comidas del día se pueden ver en esta pantalla tocando el boton central de la pantall de informe ![Pantalla comidas dia](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/f9f9db75-8e04-4366-8c1c-e2d9fe1e8580)| En esta pantalla se pueden observar y buscar ejercicios de la base de datos de Firebase ![Pantalla ejercicios](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/520c9c31-6e6c-4195-84cd-6a158ac8ae15)   |La informacon necesaria para calcular las calorías de cada usuario, es imprecindible color la información correcta![Screenshot_2023-08-25-22-24-26-749_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ec2b09a1-0b5d-4704-9fbe-4662e899e781) |Actualizarpeso para mostrar tabla en la pestaña de informe![Screenshot_2023-08-25-22-21-48-153_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/59ab26a5-0f39-447a-a5a2-7192ce3486e3)|
 |----------|:-------------:|:-------------:|:-------------:|
 
 Notificación de recordatorio de tomar agua
