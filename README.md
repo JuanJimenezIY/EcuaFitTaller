@@ -61,7 +61,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 
 Notificación de recordatorio de tomar agua
 
-<img src="https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/cfa774df-e149-4145-9af4-233e375c88e7" alt="Imagen" width="200" height="550">
+<img src="https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/cfa774df-e149-4145-9af4-233e375c88e7" alt="Imagen" width="200" height="450">
 
 
 
