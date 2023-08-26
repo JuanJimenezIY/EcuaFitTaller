@@ -30,7 +30,7 @@ class BroadcasterNotifications : BroadcastReceiver() {
             .setContentText("Tienes una notificacion")
             .setSmallIcon(R.drawable.awa)
             .setPriority(NotificationCompat.PRIORITY_MAX)
-            .setStyle(NotificationCompat.BigTextStyle().bigText("Toma awa >:v"))
+            .setStyle(NotificationCompat.BigTextStyle().bigText("Recuerda tomar la cantidad adecuada de agua en el día"))
             .setContentIntent(pendingIntent)
             .build()
 

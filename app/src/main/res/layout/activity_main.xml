@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="28dp"
-       android:layout_marginHorizontal="25dp"
+       android:layout_marginHorizontal="42dp"
         android:backgroundTint="@color/color_complementario"
         android:text="Ingresar"
         android:textAllCaps="false"

@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
-        binding.contrasenaOlvidada.setOnClickListener {
-            autenticateBiometric()
-        }
 
         binding.btnLogin.setOnClickListener {
 
@@ -109,73 +106,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun autenticateBiometric() {
-        if (checkBiometric()) {
-            val executor = ContextCompat.getMainExecutor(this)
-            val biometricPrompt = BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Autenticacion requerida")
-                .setSubtitle("Coloque su huella digital")
-                .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
-                // .setNegativeButtonText("Cancelar")
-                .build()
-            val biometricManager = BiometricPrompt(
-                this,
-                mainExecutor,
-                object : BiometricPrompt.AuthenticationCallback() {
-                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                        super.onAuthenticationError(errorCode, errString)
-                    }
 
-                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                        super.onAuthenticationSucceeded(result)
-                        startActivity(Intent(this@MainActivity, MenuActivity::class.java))
-                    }
 
-                    override fun onAuthenticationFailed() {
-                        super.onAuthenticationFailed()
-                    }
-                })
-            biometricManager.authenticate(biometricPrompt)
-        } else {
-
-            Snackbar.make(
-                binding.contrasenaOlvidada,
-                "No existen los requisitos necesarios",
-                Snackbar.LENGTH_LONG
-            )
-        }
-    }
-
-    private fun checkBiometric(): Boolean {
-        var returnValid: Boolean = false
-        val biometricManager = BiometricManager.from(this)
-        when (biometricManager.canAuthenticate(
-            BIOMETRIC_STRONG
-        )) {
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                returnValid = true
-            }
-
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                returnValid = false
-            }
-
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                returnValid = false
-            }
-
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                val intentPrompt = Intent(Settings.ACTION_BIOMETRIC_ENROLL)
-                intentPrompt.putExtra(
-                    Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-                    BIOMETRIC_STRONG or DEVICE_CREDENTIAL
-                )
-                startActivity(intentPrompt)
-                returnValid = false
-            }
-        }
-        return returnValid
-    }
 
     @SuppressLint("SuspiciousIndentation")
     private fun logIn(email: String, password: String) {

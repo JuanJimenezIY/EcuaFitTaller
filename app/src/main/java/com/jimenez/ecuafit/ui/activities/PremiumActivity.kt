@@ -2,14 +2,12 @@ package com.jimenez.ecuafit.ui.activities
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.aallam.openai.api.BetaOpenAI
-import com.aallam.openai.api.chat.ChatChoice
 import com.aallam.openai.api.chat.ChatCompletion
 import com.aallam.openai.api.chat.ChatCompletionRequest
 import com.aallam.openai.api.chat.ChatMessage
@@ -21,10 +19,8 @@ import com.aallam.openai.client.OpenAI
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.jimenez.ecuafit.R
 import com.jimenez.ecuafit.data.entities.UsuarioDB
 import com.jimenez.ecuafit.databinding.ActivityPremiumBinding
-import com.jimenez.ecuafit.logic.UsuarioLogicDB
 import com.jimenez.ecuafit.ui.utilities.EcuaFit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,12 +51,18 @@ class PremiumActivity : AppCompatActivity() {
             try {
                 val intent = packageManager.getLaunchIntentForPackage(facebookPackageName)
                 if (intent != null) {
+
+                    val facebookPageId = "115621758299827"
+                    val pageUrl = "https://www.facebook.com/$facebookPageId"
+
+
+                    intent.data = Uri.parse(pageUrl)
                     startActivity(intent)
                 } else {
                     // Si la aplicación de Facebook no está instalada
                     // Puedes abrir la página en el navegador web u ofrecer instalar la aplicación
                     // Por ejemplo:
-                    val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/"))
+                    val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/115621758299827"))
                     startActivity(webIntent)
                 }
             } catch (e: Exception) {
