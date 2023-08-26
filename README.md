@@ -20,7 +20,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 
 - Lista de ejercicios para el usuario generada en Firebase
 
-- Asesoria personal con ayuda de Inteligencia Artificial OpenAI ChatGPT
+- Asesoria personal con ayuda de Inteligencia Artificial OpenAI ChatGPT, en esta parte de la aplicación se toma un tiempo en responder ya que depende del servicio de chatGPT
 
 - Notificaciones periódicas para recordar tomar agua
 
@@ -28,7 +28,7 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 
 - Manejo de imagenes con la libreria Picasso
 
-- Uso de room para el manejo de base de datos
+- Uso de Room para el manejo de base de datos
 
 - Uso de fecha para guardar comida por días
 ## Librerias
@@ -59,7 +59,13 @@ Ecuafit es una aplicación para la gestion de la nutricion y ejercicio de las pe
 | ![Pantalla comidas dia](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/f9f9db75-8e04-4366-8c1c-e2d9fe1e8580)|  ![Pantalla ejercicios](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/520c9c31-6e6c-4195-84cd-6a158ac8ae15)   |![Screenshot_2023-08-25-22-24-26-749_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/ec2b09a1-0b5d-4704-9fbe-4662e899e781) |![Screenshot_2023-08-25-22-21-48-153_com jimenez ecuafit](https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/59ab26a5-0f39-447a-a5a2-7192ce3486e3)|
 |----------|:-------------:|:-------------:|:-------------:|
 
- 
+Notificación de recordatorio de tomar aguaa
+
+<img src="https://github.com/JuanJimenezIY/EcuaFitTaller/assets/134244991/cfa774df-e149-4145-9af4-233e375c88e7" alt="Imagen" width="300" height="650">
+
+
+
+
 
 
 
